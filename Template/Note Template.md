@@ -1,0 +1,10 @@
+{{date}} {{time}}
+
+Tags: 
+
+
+
+
+
+
+# References
