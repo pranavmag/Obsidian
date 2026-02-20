@@ -1,7 +1,7 @@
 2026-02-15 15:45
 
 Tags: [[compiler]] [[operating system]] [[assembler]] [[IO Devices]] [[hardware]] [[memory]]
-[[integrated circuits]] [[CPU]]
+[[integrated circuits]] [[CPU]] [[LCD]] 
 
 Moore's Law states that integrated circuit resources will double every 18 to 24 months. Developers have to anticipate this when they are working on systems, because the resources at the start of a project may differ from the resources at the end of the project. 
 

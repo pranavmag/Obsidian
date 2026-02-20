@@ -1,7 +1,7 @@
 2026-02-10 23:07
 
 Tags: [[functions]] [[void functions]] [[local scope]] [[function parameters]] [[namespaces]] [[unnamed parameters]]
-[[preprocessor]] [[header files]] [[header guards]] [[status codes]] [[undefined behavior]]
+[[forward declarations]] [[preprocessor]] [[header files]] [[header guards]] [[status codes]] [[undefined behavior]]
 
 ### Functions
 
@@ -51,8 +51,33 @@ Scope refers to whether an identifier can be seen and used at points in the code
 
 ### Forward Declarations and Definitions
 
+Forward declarations are declarations of a function or variable used to let the compiler know that it exists at some point later in the code or in a different file. Essentially, letting the compiler know about its existence so it doesn't generate an error. A forward declaration for a function involves using a declaration statement:
 
+int add(int x, int y);
+or
+int add(int, int);
 
+As you can see, the semicolon is necessary because it is a statement. Also, the reason that the parameter names are not needed is because the compiler does not need to know the names. Depending on the compiler, it may mangle the function into a string like Z3addii, the two i's at the end representing two integers.
+
+This is where the linker matters, you can make a forward declaration statement but if you call the function in main() but never actually define the function later with its implementation, the linker will generate an error. Furthermore, if you define the function later but do it wrong, like use the wrong data types or use more parameters than the forward declaration used, the linker can't match the mangled strings properly. 
+
+Take the add function from earlier, if you define it in a different file with
+
+double add(double x, double y) {
+     ...
+}
+
+the linker will match the two mangled strings, with this one having 'dd' at the end to signify two doubles. The linker is just a dumb matcher, it will generate a linker error because it doesn't know that that is the same function at all because the type of the function changed. However you can change the names of the function or put them in however order:
+
+int add(int y, int x) {
+     ...
+}
+
+int add(int firstNum, int secondNum) {
+     ...
+}
+
+Since the compiler never cared about the name, it doesn't tell the linker about it so the linker doesn't care either.
 
 
 
