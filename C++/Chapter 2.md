@@ -2,6 +2,7 @@
 
 Tags: [[functions]] [[void functions]] [[local scope]] [[function parameters]] [[namespaces]] [[unnamed parameters]]
 [[forward declarations]] [[preprocessor]] [[header files]] [[header guards]] [[status codes]] [[undefined behavior]]
+[[macros]]
 
 ### Functions
 
@@ -81,5 +82,33 @@ Since the compiler never cared about the name, it doesn't tell the linker about 
 
 
 
+### Namespaces
+
+When you are writing code for a project, you likely have multiple code files, and it would be hard to keep track of function names throughout all the files without knowing. If you have the same function name in multiple files, the code will compile perfectly, but the linker will complain because it will link all definitions in all the files and see a naming collision. This is because these functions are in the same namespace, the global namespace so there is no way to differentiate them. The compiler still compiles it because the compiler doesn't care about the contents of other files in the program while compiling another file, they are all separate translation units. The linker however, links all the object files made by the compiler and turns them into an executable which means that the linker does care about all the files in a program. 
+
+The solution to this is using namespaces. Namespaces provide another type of scope region called a namespace scope that allows you to declare functions and variables within it, but only these, not any executable statements.
+
+void foo(); Allowed
+int x; Allowed but discouraged
+int x { 5 }; Allowed but discouraged
+x= 5; compile error, executable statements are not allowed in namespace
+
+We've actually been using a namespace so far in this journey. std::cout uses the namespace std, which is the standard library's namespace. The actual statement is just cout but to specify what it actually is that we're taking it from, we use the namespace before the scope resolution operator (::). Anything to the left of the scope resolution operator is the namespace and anything to the right of it is the name that is contained within the namespace.
+
+
+
+### Preprocessor
+
+The preprocessor is a tool that performs text manipulation on the code file before it is passed to the compiler. It operates on lines that have a hash (#) symbol in it, known as your preprocessor directives. Preprocessor directives start with a hash (#) symbol and end with a newline. They don't end in a semicolon because the preprocessor does not understand C++ syntax. Preprocessors have their own syntax. 
+
+Macros are rules that define how input text is converted into replacement output text. The # define directive can be used to create a macro. There are two basic types of macros: object-like macros and function-like macros. Object-like macros can be defined in one of two ways:
+
+#.define IDENTIFIER
+#.define IDENTIFIER substitution_text
+(No dot is there before define, it's just for obsidian to not tag it)
+
+
+
+### Header Files
 
 
