@@ -123,5 +123,8 @@ You need to be careful in the way in which you include header files that use oth
 
 ### Header Guards
 
+Lets say you have a file named main.cpp, and this file used two header files called add.h and perimeter.h. perimeter.h also has the header file add.h itself and imports the function within. main.cpp calls both header files and accidentally loads two functions with the same name. These transitive includes as explained earlier can something cause naming collisions. To avoid this, we use header guards. Header guards allow the contents of a header file to not be copied more than once. They use the conditional compilations that we talked about earlier.
+
+There is a better, more efficient way of doing this, by using the # pragma once directive that requests the compiler guard the header rather than the developer doing that himself. Most companies use # pragma once for efficiency.
 
 
