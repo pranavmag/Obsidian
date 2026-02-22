@@ -2,7 +2,7 @@
 
 Tags: [[functions]] [[void functions]] [[local scope]] [[function parameters]] [[namespaces]] [[unnamed parameters]]
 [[forward declarations]] [[preprocessor]] [[header files]] [[header guards]] [[status codes]] [[undefined behavior]]
-[[macros]]
+[[macros]] 
 
 ### Functions
 
@@ -104,11 +104,24 @@ The preprocessor is a tool that performs text manipulation on the code file befo
 Macros are rules that define how input text is converted into replacement output text. The # define directive can be used to create a macro. There are two basic types of macros: object-like macros and function-like macros. Object-like macros can be defined in one of two ways:
 
 #.define IDENTIFIER
-#.define IDENTIFIER substitution_text
+#.define IDENTIFIER substitution text
 (No dot is there before define, it's just for obsidian to not tag it)
+
+When there is substitution text, anywhere where the identifier is present will be replaced by the substitution text.
+
+There is also a concept called conditional compilation which allows you to specify under what conditions something compiles or won't compile. There are a few preprocessor directives here: # ifdef, # ifndef, # endif and # if 0. # ifdef checks if an identifier has been previously defined or not, and the # end if is used to end the section where you're checking. # ifndef is the opposite of that obviously. # if 0 is when you just want to comment out a block of code that you can't comment out normally, for example if there's nested comments that aren't possible.
 
 
 
 ### Header Files
+
+Header files are files that end in the .h extension (sometimes .hpp). These files are used to store forward declarations that are needed and import names from the standard library or user-defined header files. 
+
+You need to be careful in the way in which you include header files that use other header files. Make sure that any dependencies you need aren't depending on the transitive includes.
+
+
+
+### Header Guards
+
 
 
