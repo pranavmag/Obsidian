@@ -19,6 +19,15 @@ This chapter also introduced types of memory. There are volatile and nonvolatile
 
 This chapter also talked about how these integrated circuits are made. It all starts with silicon. Silicon is a semiconductor, meaning that it is a poor conductor of electricity. With a chemical process materials are added to silicon to make tiny areas transform into one of three devices: excellent conductors of electricity, excellent insulators from electricity, or areas that can conduct or insulate depending on the conditions. A silicon crystal ingot is thinly sliced into wafers and those wafers have chemical patterns put on them. Each of those patterned wafers may have some defects so a method was made to cut those wafers into dies (chips). 
 
+A note worthy equation is CPU time = # CPU clock cycles X clock cycle time
+or
+the # CPU clock cycles / clock rate
+so performance is improved by reducing number of clock cycles, increasing clock rate but there is often a tradeoff between these two.
+
+Also, # clock cycles = instruction count X cycles per instruction
+so, CPU time = instruction count x CPI x clock cycle time
+or CPU time = instruction count x CPI / clock rate
+
 
 
 
