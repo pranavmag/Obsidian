@@ -12,4 +12,7 @@ A debugger allows the programmer to control how a program executes and examines 
 
 The step into command allows the debugger to go through to every single line of code and stops with each line for the programmer to examine the code's output line by line. When a function is reached the debugger goes to the top of the line of the function that has been called. The step over command does mostly the same as the step into command but instead of executing the function line by line, it executes the whole function and then gives control back to the programmer after it exits the function. The step out command unlike the other two doesn't just execute line by line, rather it executes functions entirely.
 
+A breakpoint is when you can pause execution at a certain point in the code and pass control to the debugger. You can inspect variable values and the program's state at the point of the breakpoint.
+
+The call stack is a feature within integrated debuggers that allow function calls to be tracked through a program. It helps with figuring out function execution order and what is going on with the function calls. Each function call, a new stack frame is created on top of the stack. When a function returns the stack frame is removed and then control goes back to the previous frame. 
 
