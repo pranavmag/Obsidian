@@ -2,6 +2,8 @@
 
 Tags: [[syntax errors]] [[semantic errors]] [[debugging]] [[integrated debugger]] 
 
+Syntax errors are errors that occur due to the C++ conventional rules not being followed, such as missing a semicolon and incorrectly typing a keyword. Semantic errors happen when there is a problem with the logic in your code. It is good to practice defensive programming, meaning that you don't trust the output of your code automatically and make sure to code and debug in such a way that you are able to catch errors easily if they occur.
+
 There are a couple ways that you can debug. One of them mentioned in this chapter was to use debug statements. It is recommended to use std::cerr instead of std::cout for these because std::cerr is unbuffered while std::cout is buffered. So std::cout doesn't always output to the screen immediately so you might not know if you're looking in the right or wrong place if you're code crashes before the statement has time to output. A disadvantage to these are that they clutter your code and are extra work because you have to remove these statements. However you can use preprocessor conditional compilation to only allow those debug statements to be used when the conditional compilation allows it. These get rid of the extra work of having to remove those debug statements, but they do add more clutter to your code. 
 
 You can also use a logger. A log is a sequential record of events that have happened, usually time stamped. These logs are usually written to a log file and this is great because it's completely separate from the code. 
