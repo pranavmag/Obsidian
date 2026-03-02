@@ -2,7 +2,7 @@
 
 Tags: [[functions]] [[void functions]] [[local scope]] [[function parameters]] [[namespaces]] [[unnamed parameters]]
 [[forward declarations]] [[preprocessor]] [[header files]] [[header guards]] [[status codes]] [[undefined behavior]]
-[[macros]] 
+[[macros]] [[syntax errors]] [[void]]
 
 ### Functions
 
