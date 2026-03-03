@@ -44,7 +44,7 @@ Unreferenced parameters are parameters that are not used within the body of a fu
 
 
 
-# Local Scope
+### Local Scope
 
 Scope refers to whether an identifier can be seen and used at points in the code. Local scope means that the identifier is only available to use during the function. Variables and Function parameters are initialized upon the call of the function and those variables and parameters are used throughout the function and they are out of scope once it hits the ending curly brace. Lifetime refers to the amount of time between the creation and destruction of an object. Usually objects are created upon its initialization and destroyed at end of the function.
 
