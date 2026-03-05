@@ -19,6 +19,8 @@ This chapter also introduced types of memory. There are volatile and nonvolatile
 
 This chapter also talked about how these integrated circuits are made. It all starts with silicon. Silicon is a semiconductor, meaning that it is a poor conductor of electricity. With a chemical process materials are added to silicon to make tiny areas transform into one of three devices: excellent conductors of electricity, excellent insulators from electricity, or areas that can conduct or insulate depending on the conditions. A silicon crystal ingot is thinly sliced into wafers and those wafers have chemical patterns put on them. Each of those patterned wafers may have some defects so a method was made to cut those wafers into dies (chips). 
 
+Throughput or bandwidth measures the total amount of work done in a given time.
+
 A note worthy equation is CPU time = # CPU clock cycles X clock cycle time
 or
 the # CPU clock cycles / clock rate

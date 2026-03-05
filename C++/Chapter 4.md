@@ -23,5 +23,18 @@ The more memory an object uses, the more information it can hold. You can use th
 
 ### Signed Integers
 
-Signed integers can represent integers that are negative, positive, and 0. It depends on the architecture for how many signed integers you can use. If you have an 8-bit signed integer the range is from -128 to 127, but if you have a 32-bit signed integer the range is from -2,147,483,648 to 2,147,483,647. as you can see these take in the amount of values for 2^8 and 2^32 respectively. The formula is -(2^n-1) to (2^n-1) - 1.
+Signed integers can represent integers that are negative, positive, and 0. It depends on the architecture for how many signed integers you can use. If you have an 8-bit signed integer the range is from -128 to 127, but if you have a 32-bit signed integer the range is from -2,147,483,648 to 2,147,483,647. as you can see these take in the amount of values for 2^8 and 2^32 respectively. The formula is -(2^n-1) to (2^n-1) - 1. There can also be signed overflow meaning that you go over the range of values of signed integers for the specific architecture. This results in undefined behavior and should be avoided. 
+
+
+
+### Unsigned Integers
+
+Unsigned integers can represent integers from the range of 0 and upward. The actual range also depends on the architecture. Unlike signed integers, unsigned integers dont have overflow, they have a wrap around that is not undefined behavior. It is proper C++ behavior used in some situations. It's called modulo arithmetic, for example if you go one over, it wraps to 0 and if you go two over it wraps to 1, because those are the remainders with division.
+
+
+
+### Fixed-Width Integers and size_t
+
+Fixed-width integers allow integers to be the same size on every architecture. If you want 32-bit integers, signed or unsigned, you can specify what exactly you want. This is used in some scenarios where it is needed to have a fixed size so the program doesn't crash. when trying to print out 8-bit integers using std::cout it prints out a char value, however when you do arithmetic it works as an 8-bit integer. size_t is a typedef that is simply an unsigned integer. Its size is exactly as big as your computer's architecture. On a 32-bit CPU, size_t is 32 bits, on a 64-bit CPU, size_t is 64 bits.
+
 
