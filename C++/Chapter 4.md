@@ -38,3 +38,9 @@ Unsigned integers can represent integers from the range of 0 and upward. The act
 Fixed-width integers allow integers to be the same size on every architecture. If you want 32-bit integers, signed or unsigned, you can specify what exactly you want. This is used in some scenarios where it is needed to have a fixed size so the program doesn't crash. when trying to print out 8-bit integers using std::cout it prints out a char value, however when you do arithmetic it works as an 8-bit integer. size_t is a typedef that is simply an unsigned integer. Its size is exactly as big as your computer's architecture. On a 32-bit CPU, size_t is 32 bits, on a 64-bit CPU, size_t is 64 bits.
 
 
+
+### Floating Point Numbers
+
+Floating point numbers are numbers that can include a fractional component. These numbers are calculated by the computer through binary so sometimes it may be slightly off. The precision of floating point numbers depends and can vary. Floats are usually 4 bytes and have about 6-8 significant digits of precision whereas a double takes 8 bytes and usually has about 15-17 significant digits of precision. A long double is anywhere from 8-16 bytes and has more significant digits of precision than a double. Never use floating point values for things that need to be exactly precise like in banks. One use of floating point numbers is in video games, where the lost precision cannot be perceived by the human eye so it is negligible. Use floating point numbers if loss of precision is okay and you prefer speed in a program, otherwise use ints and add the fractional component at the end after the computations.
+
+
