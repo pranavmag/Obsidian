@@ -44,3 +44,11 @@ Fixed-width integers allow integers to be the same size on every architecture. I
 Floating point numbers are numbers that can include a fractional component. These numbers are calculated by the computer through binary so sometimes it may be slightly off. The precision of floating point numbers depends and can vary. Floats are usually 4 bytes and have about 6-8 significant digits of precision whereas a double takes 8 bytes and usually has about 15-17 significant digits of precision. A long double is anywhere from 8-16 bytes and has more significant digits of precision than a double. Never use floating point values for things that need to be exactly precise like in banks. One use of floating point numbers is in video games, where the lost precision cannot be perceived by the human eye so it is negligible. Use floating point numbers if loss of precision is okay and you prefer speed in a program, otherwise use ints and add the fractional component at the end after the computations.
 
 
+
+### Booleans and If Statements
+
+A boolean value under the hood is represented either as 0 (false) or 1 (true). Although it's better to just use the keywords true and false. Any number other than 0 is usually true so why allow someone to write 42 as true or something like that, instead just use the keywords true and false. Be careful when accepting inputs for booleans, use std::boolalpha to represent those as the true and false instead of 1s and 0s when outputting them.
+
+If statements are conditional statements. Setting a condition and an else clause, meaning that if the condition is true do this, or else do this. You can also use else ifs to add multiple conditions.
+
+
