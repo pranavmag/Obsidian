@@ -52,3 +52,11 @@ A boolean value under the hood is represented either as 0 (false) or 1 (true). A
 If statements are conditional statements. Setting a condition and an else clause, meaning that if the condition is true do this, or else do this. You can also use else ifs to add multiple conditions.
 
 
+
+### Chars and static_cast
+
+Chars are also integral types, meaning that they are integers under the hood. Chars represent a single character value in ASCII.
+
+static_cast is used for explicit type conversion where you tell the compiler I am changing the type on purpose, do not throw an error at me. Implicit type conversion is where you change the type without specifying it, the compiler will do it automatically like. When converting from something like a double to an int, the compiler will throw an error if it's an implicit conversion because there will be loss of data because you are losing the fractional component.
+
+
