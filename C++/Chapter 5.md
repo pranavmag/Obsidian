@@ -23,4 +23,6 @@ long value {2'132'453'234}; is much easier to read than long value {2132453234};
 
 A program that optimizes another program is called optimizer. The as-if rules says that a compiler can modify a program however it likes to produce more optimized code, as long as those modifications don't affect the program's observable behavior.
 
+Constant Folding is when the compiler replaces literal operands with the result of the expression. Constant Propagation is when the variables that have constant values are replaced with its literal value. Dead code elimination is when the compiler removes code that may be executed but has no effect on the program's behavior.
+
 
