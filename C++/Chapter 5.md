@@ -26,3 +26,9 @@ A program that optimizes another program is called optimizer. The as-if rules sa
 Constant Folding is when the compiler replaces literal operands with the result of the expression. Constant Propagation is when the variables that have constant values are replaced with its literal value. Dead code elimination is when the compiler removes code that may be executed but has no effect on the program's behavior.
 
 
+
+### Constexpr
+
+Constant expressions only allow integral values, literals, operators, and anything that can be run at compile-time. If you try to make a function call or double value even if it's const, it won't be considered a const expression.
+
+
