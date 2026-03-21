@@ -1,6 +1,7 @@
 2026-03-06 00:11
 
-Tags: [[register operands]]
+Tags: [[register operands]] [[signed integers]] [[unsigned integers]] [[instructions]]
+[[logical operations]] 
 
 ### Register Operands
 
@@ -29,3 +30,67 @@ add x9, x21, x9  and setting the new value of x9 as x21 + x9
 sd x9, 96(x22)    and saving that value from x9 to memory address 96(x22) 
 
 Registers are fast, memory is slow → load from memory, compute in registers, store back
+
+
+
+### Signed and Unsigned Integers
+
+Unsigned and signed integers both represent a range of values but the way they are represented is different. For example on a 32-bit system a 32-bit unsigned integer represents 2^32 values which is about 0 to 4 billion. Unsigned integers hold know signed bits so the range starts from 0 and so on. Signed integers however do have the leftmost bit represented a negative bit. For every positive bit there is a negative bit that complements it. So there are also about 4 billion values for a signed 32-bit integer but the range shifts downwards and represents those values from about -2 billion to 2 billion.
+
+
+
+### Instructions
+
+For RISC-V there are different types of instructions, essentially how these bits are split up and interpreted by the CPU depending on the type of instructions.
+
+R-type instructions are used for instructions like adding and subtracting. The layout is something like
+
+add x5, x6, x7
+
+| funct7 | rs2 | rs1 | funct3 | rd | opcode |
+| 7 bits  | 5    | 5    | 3         | 5   | 7           |
+
+rs1 - source register 1 (first input x6)
+rs2 - source register 2 (second input x7)
+rd - destination register (stored result x5)
+opcode - instruction category
+funct7, funct3 - further specifies the operation
+register -> register
+
+I-type instructions are used for loading instructions like addi (Add Immediate) and ld (load doubleword). The layout is something like
+
+addi x5, x6, 10
+
+| immediate | rs1 | funct3 | rd | opcode |
+| 12 bits       | 5    | 3         | 5   | 7           |
+
+rs1 - source register 1 (first input x6)
+immediate - value 10 (constant OR offset used with a base register)
+rd - destination register (stored result x5)
+opcode - instruction category
+funct3 - further specifies the operation
+The exact operation = opcode + funct3 + funct7
+register -> immediate
+
+
+S-type instructions are used for saving instructions like sd (store doubleword). It is similar to I-type instructions but the immediate is split to two locations because we need rs2 (the value to store) and rs1 (the base address). The layout is something like
+
+sd x10, 80(x2)
+
+imm[11:5] | rs2 | rs1 | funct3 | imm[4:0] | opcode |
+| 7 bits      | 5    | 5    | 3         | 5             | 7           |
+
+rs1 - source register 1 (base address x2)
+rs2 - source register 2 (value being stored x10)
+imm = 80 (offset of address x2)
+opcode - instruction category
+funct3 - further specifies the operation 
+
+So in summary:
+R-type → rd = rs1 op rs2
+
+I-type → rd = rs1 op imm
+        rd = Memory[rs1 + imm]
+
+S-type → Memory[rs1 + imm] = rs2
+
