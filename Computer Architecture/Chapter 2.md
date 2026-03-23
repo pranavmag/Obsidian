@@ -94,3 +94,19 @@ I-type → rd = rs1 op imm
 
 S-type → Memory[rs1 + imm] = rs2
 
+
+
+### Logical Operations
+
+if statements and loops in code under the hood can be used in assembly. There are statements like bne (branch if not equal), beq (branch if equal) and Loop: that allow us to use these statements.
+
+Assembly code executes line by line so you have to have branches that you can automatically go to. For example:
+
+bne x22, x23, Else
+add x19, x20, x21
+beq x0, x0, Exit
+Else: sub x19, x20, x21
+Exit: ...
+
+In this example, the first statement executes if x22 != x23, which jumps over to the Else branch skipping over the following add and beq statements and automatically executing sub x19, x20, x21. But, if the first statement was not true meaning that x22 == x23, the code doesn't jump to the Else branch and continues on to the add statement. But you don't want it to eventually hit the Else branch so before the Else branch on the third statement we have a conditional that is always true, meaning if we make it there we don't hit the Else and skip over to the Exit.
+
