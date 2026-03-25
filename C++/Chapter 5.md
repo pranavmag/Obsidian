@@ -29,6 +29,16 @@ Constant Folding is when the compiler replaces literal operands with the result 
 
 ### Constexpr
 
-Constant expressions only allow integral values, literals, operators, and anything that can be run at compile-time. If you try to make a function call or double value even if it's const, it won't be considered a const expression.
+Constant expressions only allow integral values, literals, operators, and the initializer can be known at compile-time or runtime. If you try to make a function call or double value even if it's const, it won't be considered a const expression. Constexpr allows for a compile-time constant that allows for non-integral types to be used.
+
+
+
+### Std::String and Std::String_View
+
+std::string allows strings to be used in variables. It is different than C-style strings but it can be initialized through a C-style string. But if you want to use a std::string literal you can use the suffix s after the double quotes. The length of a std::string can be found by using the .length() member function.
+
+Using std::string as a parameter in a function or returning it by value is not ideal because it makes an expensive copy each time. Using std::string_view is better for that or using the reference of the std::string as the parameter and returning the reference so it doesn't make a copy.
+
+std::string_view allows for a current string to be read-only which allows it to be viewed and used but not modified. No expensive copies are made because of this. You can initialize a std::string_view with any type of string: C-style string, std::string, or even another atd::string_view.
 
 
