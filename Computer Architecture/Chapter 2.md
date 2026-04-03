@@ -1,7 +1,7 @@
 2026-03-06 00:11
 
 Tags: [[register operands]] [[signed integers]] [[unsigned integers]] [[instructions]]
-[[logical operations]] 
+[[logical operations]] [[procedures]] [[functions]] [[if statements]] [[stack]]
 
 ### Register Operands
 
@@ -109,4 +109,18 @@ Else: sub x19, x20, x21
 Exit: ...
 
 In this example, the first statement executes if x22 != x23, which jumps over to the Else branch skipping over the following add and beq statements and automatically executing sub x19, x20, x21. But, if the first statement was not true meaning that x22 == x23, the code doesn't jump to the Else branch and continues on to the add statement. But you don't want it to eventually hit the Else branch so before the Else branch on the third statement we have a conditional that is always true, meaning if we make it there we don't hit the Else and skip over to the Exit.
+
+
+
+### Procedures
+
+A procedure is a jump to a different part of the program, where it does some work there, and then jumps back to where it came from. Every procedure call passes arguments, jumps to the function, allocates space on the stack, does work there, returns the result, and then jumps back to the caller.
+
+For example, jal x1, function - jumps to the function and saves the return address in x1. The return will be using jalr x0, 0(x1) which jumps back using x1.
+
+The stack is where we store things temporarily. It grows downward from high addresses to low addresses. You push on the stack to save new things and pop when you want to restore them to use.
+
+The caller is the one who calls the function and they must save temporaries if needed later and argument registers. The callee is the function that's being called and must save the return address and saved registers (x8-x9, x18-x27).
+
+
 
