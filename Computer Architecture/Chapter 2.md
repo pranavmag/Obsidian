@@ -1,8 +1,8 @@
 2026-03-06 00:11
 
 Tags: [[register operands]] [[signed integers]] [[unsigned integers]] [[instructions]]
-[[logical operations]] [[procedures]] [[functions]] [[if statements]] [[stack]]
-
+[[logical operations]] [[procedures]] [[functions]] [[if statements]] [[stack]] [[synchronization]]
+[[threads]] [[processors]] [[atomic]]
 ### Register Operands
 
 A CPU performs operations using registers and can only do one operation at a time so we have register operands. For example,
@@ -121,6 +121,25 @@ For example, jal x1, function - jumps to the function and saves the return addre
 The stack is where we store things temporarily. It grows downward from high addresses to low addresses. You push on the stack to save new things and pop when you want to restore them to use.
 
 The caller is the one who calls the function and they must save temporaries if needed later and argument registers. The callee is the function that's being called and must save the return address and saved registers (x8-x9, x18-x27).
+
+
+
+### Synchronization
+
+Multiple threads/processors share memory so the problem is that the timing is off when one thread writes and another thread reads. You'll get data races if two threads access the same memory.
+
+This is why we use atomic operations which is an operation that cannot be interrupted halfway.
+
+Thread A: reads 
+Thread B: writes
+Thread A: writes
+Thread B: writes
+
+This is dangerous because both threads think they acquired the lock. 
+
+One solution is if memory = 0 a thread can get the lock but if memory = 1 then another thread already has it.
+
+In RISC-V there are two instructions: lr.w (Load Reserved) that reads the value and watches that memory location and sc.w (Store Conditional) that tries to store and only succeeds if nothing changed since lr.w.
 
 
 
