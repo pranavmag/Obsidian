@@ -1,6 +1,6 @@
 2026-04-16 21:31
 
-Tags: [[datapath]] [[control unit]] 
+Tags: [[datapath]] [[control unit]] [[pipelining]]
 
 ### Control & Datapath
 
@@ -74,3 +74,19 @@ Control signals configure the datapath so the same hardware can execute differen
 
 
 ### Pipelining
+
+We want to optimize using pipelining to use clock cycles efficiently. Think of it from the perspective of laundry. One scenario is that you put the clothes in the washing machine then move them into the dryer and then fold them, then you do that cycle all over again with the next set of clothes. Another approach to that is putting the clothes in the washing machine, and when you move them to the dryer you put the next set of clothes in the washing machine so that all resources are being used efficiently. Whenever you move to the next step you add another set of clothes if possible.
+
+The same can be done with these instructions. There are 5 different stages in pipelining. 
+
+IF: Instruction Fetch -> grabbing the 32-bit chunk of binary data from memory. The CPU looks at PC, which holds a memory address and goes to that address in Instruction Memory, copies the 32-bit word, and pulls it into the CPU. Updates PC before cycle ends.
+
+ID: Instruction Decode -> Figuring out what those 32 bits mean. The control unit figures out by looking at the opcode to determine the instruction type, identifying source registers and immediate values. It also may further check funct3, funct7, funct5 and stuff like that for further arithmetic operations and reads the values in the source registers as well. The ID/EX register now holds the decoded instruction type, the values pulled from rs1 and rs2, and any immediate values needed.
+
+EX: Execute -> Performing the computation. The ALU takes over and does its job like we mentioned up there in datapath/control section. The EX/MEM register now has the computational result or memory address. 
+
+MEM: Memory Access -> Read from or write to Data Memory (RAM). If the instruction is a Load, the CPU takes the address calculated in the EX stage, goes out to RAM, and retrieves the data. If it's a Store, then it takes a value from a register and pushes it out to RAM at that address. It passes through this stage if it's just a standard arithmetic operation or anything like that. The MEM/WB register now holds either the data pulled from memory or the result passed from the ALU. 
+
+WB: Write-Back -> Save the final result. The CPU takes the final value and writes it to the destination register (rd). 
+
+
