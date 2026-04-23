@@ -90,3 +90,16 @@ MEM: Memory Access -> Read from or write to Data Memory (RAM). If the instructio
 WB: Write-Back -> Save the final result. The CPU takes the final value and writes it to the destination register (rd). 
 
 
+
+### Hazards
+
+Data Hazards are when an instruction depends on the result of a previous instruction that hasn't completed yet. For example:
+
+add x19, x0, x1 // writes x19 in cycle 5 (WB stage).
+sub x2, x19, x3 // needs x19 in the cycle 3 (EX stage).
+
+We don't want to use old values. 
+
+Structural Hazards are when two instructions need the same hardware resource during the same cycle. If there were only one memory 
+
+
