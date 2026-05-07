@@ -93,13 +93,16 @@ WB: Write-Back -> Save the final result. The CPU takes the final value and write
 
 ### Hazards
 
-Data Hazards are when an instruction depends on the result of a previous instruction that hasn't completed yet. For example:
+**Data Hazards** are when an instruction depends on the result of a previous instruction that hasn't completed yet. For example:
 
 add x19, x0, x1 // writes x19 in cycle 5 (WB stage).
 sub x2, x19, x3 // needs x19 in the cycle 3 (EX stage).
 
 We don't want to use old values. 
 
-Structural Hazards are when two instructions need the same hardware resource during the same cycle. If there were only one memory 
+**Structural Hazards** are when two instructions need the same hardware resource during the same cycle. If there were only one memory (not separate instruction and data memories), an instruction fetch and a data access could conflict. RISC-V's pipelined design avoids this by using separate instruction and data memories. This doesn't mean that RISC-V can't have any though.
+
+
+One solution is **Forwarding** (Bypassing). Instead of waiting for the value to be written back before using it in another instruction, we can forward the result directly from where it is computed (EX/MEM or MEM/WB pipeline register) to where it is needed (the ALU input). This needs multiplexors (muxes) at the ALU inputs, controlled by a Forwarding Unit that detects hazard conditions by comparing register numbers.
 
 
