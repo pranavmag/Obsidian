@@ -100,6 +100,8 @@ sub x2, x19, x3 // needs x19 in the cycle 3 (EX stage).
 
 We don't want to use old values. 
 
-Structural Hazards are when two instructions need the same hardware resource during the same cycle. If there were only one memory 
+Structural Hazards are when two instructions need the same hardware resource during the same cycle.
+
+We can use Forwarding or Stalling to mitigate these.
 
 
