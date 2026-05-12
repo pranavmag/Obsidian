@@ -1,6 +1,6 @@
 2026-04-16 21:31
 
-Tags: [[datapath]] [[control unit]] [[pipelining]]
+Tags: [[datapath]] [[control unit]] [[pipelining]] [[ALU]] [[memory]] 
 
 ### Control & Datapath
 
@@ -104,5 +104,16 @@ We don't want to use old values.
 
 
 One solution is **Forwarding** (Bypassing). Instead of waiting for the value to be written back before using it in another instruction, we can forward the result directly from where it is computed (EX/MEM or MEM/WB pipeline register) to where it is needed (the ALU input). This needs multiplexors (muxes) at the ALU inputs, controlled by a Forwarding Unit that detects hazard conditions by comparing register numbers.
+
+You can also implement Stalling which is used for the load-use hazard. This hazard occurs when a lw is immediately followed by an instruction that uses the loaded value like:
+
+lw x2, 20(x1)    // x2 available after MEM Stage (cycle 4)
+and x4, x2, x5  // needs x2 in EX stage (cycle 3) - too early!
+
+So the way to solve this is by using a stall. Freeze the PC and stall the IF/ID register for one cycle. Insert a bubble (NOP) into the EX stage by zeroing all control signals in ID/EX. This makes it so that the value from MEM/WB can forward the correct value.
+
+
+Control Hazards (Branch Hazards) happen when a branch is is encountered but the processor doesn't know whether to take that branch or continue sequentially. You can either stall on branch, predict not taken, or use dynamic prediction.
+
 
 
