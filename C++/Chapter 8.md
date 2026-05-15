@@ -8,6 +8,7 @@ We talked about if statements in a previous chapter but now we are introducing m
 ![[Pasted image 20260514184119.png|697]]
 
 ### Switch vs If-Else
+
 Switch statements are best used with single expressions (with a non-boolean integral or an enumerated type) that we want to evaluate for equality against a small number of values. Switch statements can get harder to read with more cases but that's up the programmer to see the tradeoffs they'd like to make.
 
 If-else statements are more flexible in that they can test expressions for comparisons other than equality and they can test multiple conditions. They can also use any data type, test for ranges, or be used if the expression evaluates to a bool.

@@ -49,6 +49,20 @@ NUMBER(123)
 SEMICOLON
 EOF
 
+So how exactly does this scanning work?
+
+The loop starts off for scanning the tokens, if it's at the end of the all the tokens then it returns a EOF token and return. The EOF token isn't strictly necessary but it makes parsing more convenient. If it's not at the end of all the tokens then it sets the start as the current and then scans that individual token using a different function to scan a singular char and decide whether to emit a token or not. The individual scan token would be to check for single-character literal values or more like '=' or '!='. We also need to check slash to make sure it isn't a comment separately. Those all need to be made as individual tokens so they have to be evaluated for each character we go through. It can do the same with string literals, digits, etc but we should probably hand those to helper functions. Then we loop back to checking if it's at the end or not and keep doing that until we hit the EOF.
+
+We have our little helper functions in our Scanner class to help us with stuff like this.
+
+advance() is the main mover. Every time it is called, it reads the current character and moves the cursor forward by one.
+
+peek() allows us to look at the current character without consuming it. The cursor does not move forward. You'd use this when you need to know what is up ahead for example when you are checking '/' and you need to see if it's division or a comment with '//'. If it is a comment you use peek to check if the character up ahead is a newline character '\n' to see if you need to allow it to advance or not.
+
+match(expected) is like a conditional advance(). It peeks at the next character and if it matches what you are looking for it consumes the character and returns true. This is useful for checking characters like '!' to see if the next character is '=' to make it either just '!' or '!='.
+
+peekNext() is used for number literals when looking past the decimal '.' to see if there is a number literal there or not. This matters because '.' also separates member function calls like 123.toString(). peekNext() looks two characters ahead.
+
 ### Entering Program
 
 We need to set up our main to actually run the logic we write for the lexer/parser/compiler logic. Since we're reading individual characters of a source we need a function that takes in a string that carries that source. 
