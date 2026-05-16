@@ -28,7 +28,6 @@ The Lexeme
 A Literal Value
 Line Number
 
-
 ### Scanning
 
 Now we essentially need a loop here to walk through the source string character by character and group those characters into tokens. The loop continues with every single character that we have in our source code. 
@@ -91,8 +90,6 @@ argv[0] = "C"
 argv[1] = "test.C"
 
 Any argument count past 2 is too much. If the argument count is 2 then run the file with the second element of the argv array which will be the file. If the argument count is less than two you can just run the prompt.
-
-
 
 ### Error Reporting
 

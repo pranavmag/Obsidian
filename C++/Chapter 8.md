@@ -17,4 +17,18 @@ The text did mention about switch statements being able to be optimized into jum
 
 To be honest, it really depends on the situation and the programmer. In my RISC-V CPU emulator I couldn't check the opcode, funct7, and funct3 together in the switch statements because you can only check one condition. My first iteration of the code was using a long if-else chain of checking opcode, funct7, and funct3 to identify the assembly instruction but I decided to refactor it into a nested switch statement with opcode first and then funct3 and then an if-else chain for the funct7. I felt that 3 checks for if-else chain may or may not have been difficult for the compiler to optimize so i decided for essentially an O(1) operation for the nested switch.
 
+### Gotos
+
+Gotos allow you to jump to any part within the function you are in unconditionally. They have function scope meaning that they can see anything within the function even if it isn't declared yet. Gotos are generally advised against because the flow of your program is hard to follow with them. Most things that can use gotos can also be implemented with conditional statements or loops and likely in a better way as well. Gotos can not jump over initialization of any variables. For example:
+
+goto Label; // compiler error! 
+
+int x = 3;
+
+Label:
+;
+
+
+
+
 
