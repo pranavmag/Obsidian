@@ -121,6 +121,50 @@ consume(type, message): This is the strict enforcer of your grammar. If you are 
 
 peek() and previous(): These let the parser look around without committing. peek() looks at the token at current_ without advancing, which is crucial for the Pratt parser's while (bindingPower(peek()) > minBP) loop to decide if it should keep grabbing operators or stop.
 
+#### Hybrid Parsing Strategy
+
+You should maintain the parser's state using a vector of tokens and having a cursor that moves through each token. 
+
+##### Recursive Descent (for statements):
+
+Statements are predictable, they almost always start with a keyword (if, while, return). You should have a central statement() function dispatcher that looks at the current token and immediately routes to a specific handler (ifStatement(), whileStatement(), etc.). This top-down approach cleanly lays out the control flow structure for each statement so that the RISC-V backend can emit the specific instructions it needs to using that blueprint.
+
+##### Pratt Parsing (for expressions):
+
+Expressions are ambiguous and rely on strict mathematical precedence (1 + 2 * 3). Standard recursive descent needs way too many functions to make it work for expressions like these. Pratt Parsing makes this faster by using a while loop driven by a Binding Power Table.
+
+##### Binding Power
+
+Binding power: A number assigned to each operator token. Higher = tighter binding. Replaces the stratified grammar entirely.
+
+Let's say we have an expression like 1 + 2 * 3.
+The 2 is stuck in between + and multiplication, but which gets to keep 2 to operate on?
+This is where binding power gives precedence to multiplication because that operator can have a higher binding power of 40 as opposed to addition which could have a binding power of 30.
+
+This guarantees that the multiplication operation gets pushed deeper into the Abstract Syntax Tree. When our RISC-V execution engine walks this tree later, it will hit the bottom nodes first. It will emit the mul instruction to calculate 2 * 3 and store it in a temporary register before it ever tries to emit the add instruction.
+
+##### Nud Function
+
+nud (Null Denotation): Handles prefix tokens (starts of expressions, like numbers, identifiers, or unary -).
+
+nud is called when the parser is looking at a token that has absolutely nothing to its left. It is the start of a brand new expression.
+
+nud builds the leaves of our tree here. If the nud function sees the number 42 then it wraps it into a LiteralNode and returns it, if it sees a - like in -5 then it asks the parser to grab the next number and packages them together in a UnaryOpNode.
+
+##### Led Function
+
+led (Left Denotation): Handles infix tokens (middle of expressions, like + or *). 
+
+The led function is called when the parser has already parsed a chunk of code on the left, and it encounters an operator that wants to connect that left chunk to a new right chunk.
+
+Lets say the parser has successfully parsed the number 1 which is passed into led as the left argument, and the current token is +. The led function takes the + operator, looks at the binding power of + (lets say 30), and asks the parser to parse the right hand side but only grab the tokens that have a glue strength greater than 30. Once it gets the right hand side back then it packages the left (1), the +, and the right into a new BinaryOpNode and returns it. These are the branches of our tree.
+
+
+
+
+
+
+
 
 
 
