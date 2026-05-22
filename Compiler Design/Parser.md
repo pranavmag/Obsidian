@@ -161,6 +161,17 @@ Lets say the parser has successfully parsed the number 1 which is passed into le
 
 
 
+### Error Handling & Panic Mode Recovery
+
+To prevent a compiler from crashing on the first syntax error, or worse, passing a corrupted AST to the backend, the parser uses a strategy called Panic Mode Recovery. 
+
+ParseError: A simple exception class. It is used as a "panic button" to instantly abort the current parsing path without needing manual nullptr checks at every step of the recursive descent chain.
+
+consume: Checks if the required token is present. If it is missing, it throws a ParseError. This ensures the RISC-V code generator never receives structurally invalid nodes (like an IfStmt missing its condition). 
+
+synchronize: When a ParseError is caught at the top level, the token cursor is still pointing at the bad syntax. If the parser tried to continue immediately, it would infinitely crash. synchronize() discards tokens until it finds a clear synchronization point (like a ; or a starting keyword like if, int, while). This aligns the parser to safely resume analyzing the rest of the file to report multiple errors in a single compilation run.
+
+
 
 
 
