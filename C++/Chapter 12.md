@@ -44,7 +44,7 @@ Function parameter references are just pointers under the hood.
 
 Although these need to be objects, you cannot pass in literal values to the function call when taking a reference.
 
-int add (&x, &y) {implementation}
+int add (int& x, int& y) {implementation}
 
 int main() {
 add(23, 20);    // not allowed
@@ -78,5 +78,48 @@ For the const std::string&, the std::string is an inexpensive reference binding,
 
 ### Pointers
 
-Pointers are variables that store the memory address of other variables. 
+Pointers are variables that store the memory address of other objects or functions. You can instantiate a pointer with this syntax:
+
+int x = 2;
+int* ptr = &x;
+
+Pointers unlike references can be reseated to point to a different memory address and like references they can change the value of the object held at that memory address. Accessing or changing the value of the object is known as dereferencing the pointer. I will show an example of each respectively:
+
+ptr = &y;  // reseats pointer to point to the memory address of y
+std::cout << *ptr;  // dereference the pointer and print the value
+*ptr = 4;    // dereferences pointer to change value of the object stored at the memory address the pointer it pointing to
+
+Pointers provide more flexibility than references but they can be more dangerous as well. Unlike references which can't point to null, pointers can point to null, which we call null pointers. References must point to valid objects. A null pointer just means that the pointer is pointing to no object. You can't dereference a null pointer because there is no object to dereference the value of.
+
+Pointers can also be dangling pointers. This happens when the object you are pointing to is destroyed before the pointer can be destroyed. This is dangerous because there is no easy way to know this happened because it is undefined behavior. In the case of a nullptr that wasn't intended, you can check it using an if statement. But, in the case of a dangling pointer, it may be pointing to an object, just not what you intended so it's hard to tell. It is much harder to get a dangling reference so references are generally seen as safer for most situations.
+
+Pointers can also be pointing to a const value and also be const pointers. These two are different things:
+
+const int* ptr = &x;    // pointer to a const object
+int* const ptr = &x;   // const pointer to an object
+
+A pointer to a const object means that you cant change the value of the object but you can reseat the pointer, the pointer is not const but the object it is pointing to is. 
+
+A const pointer can change the object's value but the pointer cannot be reseated to point to something different.
+
+If you want both then do:
+
+const int* const ptr = &x;   // This makes both the pointer and the underlying object const.
+
+
+### Pass by Address
+
+Pass by Address allows you to take in a pointer parameter in functions. What it essentially does is copy the address of the object you pass in and create a ptr. This means that if you reseat the pointer to a different value within the function, it won't reseat the pointer from the caller. Although changing the value of the object at that memory address will change the object that the caller's ptr is looking at as well as long as they are both pointing to that memory address. It's important to make that distinction. There are two ways to pass by address:
+
+void increment(int* ptr) {implementation}
+
+int main() {
+
+int x = 5;
+int* ptr = &x;
+
+increment(ptr);  // Passing in the pointer directly, ptr in increment's function parameter makes a new pointer copy to the same address
+
+increment(&x);  // Passing in the reference to make the pointer
+}
 
