@@ -4,11 +4,11 @@ Tags:
 
 ### lvalues and rvalues
 
-lvalues are any values that can be reused. rvalues are any values that can't be reused after the expression they are currently being used in such as literals (except C-style string literals). For example:
+lvalues are any values that refer to an identifiable object and rvalues are any values that can't be reused after the expression they are currently being used in such as literals (except C-style string literals). This is because rvalues are temporaries. For example:
 
 int x = 5;
 x is an lvalue but the literal 5 is an rvalue.
-You can take the address of (&) x but you can't take the address of (&) the literal 5 because the literal 5 is not a valid object that has a memory address. 
+You can take the address of (&) x but you can't take the address of (&) the literal 5 because the address of operator to lvalues only (most of the time).
 
 Why is a C-style string literal not a r-value reference? This is because a C-style string literal has the possibility of decaying to a const char array pointer.
 
@@ -74,4 +74,9 @@ The general rule of thumb is to pass by value if the object is cheap to copy, wh
 But in the case of strings, you can pass in a const std::string& but the better approach is to pass by value here using a std::string_view. Passing by value with a std::string view offers 2 more cases where you can use it. Lets say we have these two parameters and pass in three different values: std::string, std::string_view, and C-style string literal. 
 
 For the const std::string&, the std::string is an inexpensive reference binding, however the std::string_view is an expensive explicit conversion to std::string, and the C-style string literal is an expensive conversion. For the std::string_view parameter, the std::string is a inexpensive conversion, the std::string_view is an inexpensive copy, and the C-style string literal is an inexpensive conversion. You get two more cases covered inexpensively by using a std::string_view parameter.
+
+
+### Pointers
+
+Pointers are variables that store the memory address of other variables. 
 
