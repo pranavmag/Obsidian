@@ -39,3 +39,41 @@ Virtual Registers are registers that are separate from the physical registers. T
 Every local variable that we have will become an alias for a virtual register ID. We don't deal with memory right now, so we don't need to worry about LOAD/STORE at the moment.
 
 
+### Control Flow Graph (CFG)
+
+While the AST represents code as a nested tree, our RISC-V CPU does not understand nesting, they only understand jumping to different memory addresses. The Control Flow Graph (CFG) is the data structure that replaces the AST in the Middle-End.
+
+The Structure: A CFG is a web of Basic Blocks. Each block contains a vector representing straight line code
+
+Dynamic Spawning: As the IR Generator walks down an if statement or while loop, it dynamically creates new Basic Block objects on the fly, emits conditional branch Quads, and wires the block pointers together before recursively exploring the inner blocks.
+
+
+### AST to Linear IR via Post-Order Traversal
+
+We can use a post-order traversal to flatten the Pratt-parsed expressions into a 1D sequence.
+
+The IR Generator which acts as our ExprVisitor has to evaluate the children before it evaluates the parent operator.
+
+Every single visit method for an expression must return an int representing the virtual register id that holds the result of that node.
+
+When visiting a + b * c, the + node asks its left child (a) for its vreg.
+The + node asks its right child (*) for its vreg.
+The * node is forced to evaluate b and c, emits a Multiply Quad, and hands its resulting vreg back up to +.
+Finally, the + node emits an Add Quad. The recursive unwinding naturally generates the instructions in the exact correct machine execution order.
+
+Simplified Symbol Table: We aren't allowing nested blocks at least for the time being so we can just have one single flat map for the whole function instead of a struct with parent pointers.
+
+
+### Middle-End Translator's Workflow
+
+With only one flat map, the Middle-End Translator's job of walking the AST becomes straightforward.
+
+Simplified Design: Because we altered the Parser to **strictly prohibit arbitrary nested blocks**, all local variables exist at the same function-level scope.
+    
+Flat Map: We do not need a complex "Sheaf of Tables" or linked list of Environments. We only need a single `std::unordered_map<std::string, int>` per function.
+
+Lifecycle: Entering a function -> `.clear()` the map.
+    
+visitVarDecl -> Check if it exists (error if true), allocate a new vreg, and add to the map.
+        
+visitIdentifier -> Look up the variable name in the map and return its assigned vreg ID.
