@@ -39,6 +39,13 @@ Virtual Registers are registers that are separate from the physical registers. T
 Every local variable that we have will become an alias for a virtual register ID. We don't deal with memory right now, so we don't need to worry about LOAD/STORE at the moment.
 
 
+### Basic Blocks
+
+The Basic Block is a list of sequential instructions that are guaranteed to execute together. The fundamental rule of a Basic Block is: Enter at the top, exit at the bottom. 
+
+You can't jump to the middle of a Basic Block from somewhere else, you can only enter in through the first instruction. There are no BEQ or JAL instructions hidden in the middle of the block. A branch or jump is only ever allowed to be the very last instruction in the block.
+
+
 ### Control Flow Graph (CFG)
 
 While the AST represents code as a nested tree, our RISC-V CPU does not understand nesting, they only understand jumping to different memory addresses. The Control Flow Graph (CFG) is the data structure that replaces the AST in the Middle-End.
