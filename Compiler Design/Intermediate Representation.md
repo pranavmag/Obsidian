@@ -45,6 +45,19 @@ The Basic Block is a list of sequential instructions that are guaranteed to exec
 
 You can't jump to the middle of a Basic Block from somewhere else, you can only enter in through the first instruction. There are no BEQ or JAL instructions hidden in the middle of the block. A branch or jump is only ever allowed to be the very last instruction in the block.
 
+That's why we can make a Basic Block an array of the Quads we have because they are just a predictable array of math operations.
+
+
+
+
+### Edges
+
+An edge is essentially a bridge to the next area. A Basic Block as we know exits at the bottom so the final instruction tells the CPU where to go next. The edges provide that route.
+
+One Edge (Unconditional): The block ends with something like a JAL. It has exactly one edge pointing to the target block.
+
+Two Edges (Conditional): The block ends with something like BEQ or BLT. It has two edges: one pointing to the block if the condition is true and one pointing to the block if the condition is false.
+
 
 ### Control Flow Graph (CFG)
 
@@ -52,7 +65,7 @@ While the AST represents code as a nested tree, our RISC-V CPU does not understa
 
 The Structure: A CFG is a web of Basic Blocks. Each block contains a vector representing straight line code
 
-Dynamic Spawning: As the IR Generator walks down an if statement or while loop, it dynamically creates new Basic Block objects on the fly, emits conditional branch Quads, and wires the block pointers together before recursively exploring the inner blocks.
+Dynamic Spawning: As the IR Generator walks down an if statement or while loop, it dynamically creates new Basic Block objects on the fly, emits conditional branch Quads, and wires the block pointers together before recursively exploring the inner blocks
 
 
 ### AST to Linear IR via Post-Order Traversal
