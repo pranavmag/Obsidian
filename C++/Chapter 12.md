@@ -1,6 +1,6 @@
 2026-05-26 21:12
 
-Tags: 
+Tags: [[lvalue]] [[rvalue]] [[references]] [[pointers]]
 
 ### lvalues and rvalues
 
