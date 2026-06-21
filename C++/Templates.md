@@ -101,3 +101,16 @@ Now this can match any pointer type, so it's not a full specialization towards o
 For functions there is no partial specialization because that is essentially just overload resolution anyways.
 
 
+### Variadic Templates
+
+Variadic Templates are a feature that allows you to allow a class or function template to accept an arbitrary number of arguments of any type. Variadic Templates are type safe.
+
+```
+template<typename... Args>
+void print(Args... args)
+```
+
+There is a parameter pack, denoted by an ellipsis `...`
+
+Template Parameter Pack: Represents zero or more types
+Function Parameter Pack: Represents zero or more function arguments.
