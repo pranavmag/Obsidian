@@ -17,6 +17,7 @@ Custom Types: Structs, Enums
 | 64-bit  | i64    | u64      |
 | 128-bit | i128   | u128     |
 | arch    | isize  | usize    |
+
 isize reminds me of size_t in C++. Also interesting they have 128-bit in here, i'm not actually sure if they have that in C++.
 
 

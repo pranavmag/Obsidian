@@ -184,11 +184,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "021d122aa22f057c",
+  "active": "2164064c20eb2760",
   "lastOpenFiles": [
-    "Rust/Variables, Shadowing, Const.md",
-    "Rust/Data Types.md",
     "Rust/Braindump/[BRAINDUMP] Variables, Shadowing, Const.md",
+    "Rust/Data Types.md",
+    "Rust/Variables, Shadowing, Const.md",
     "C++/Templates.md",
     "C++/CMake.md",
     "Computer Architecture/Chapter 1.md",
