@@ -59,6 +59,12 @@ You can't do this because bools cannot be uninitialized.
 
 4 bytes in size and used to represent a single unicode scalar value. This surprised me because in C++ it is usually 1 byte in size. What problem is Rust solving by making char Unicode instead of a byte? I looked into it and this likely allows for more character options to be able to use. For example common English characters take up one byte but complex symbols and emojis may take up to 3 or 4 bytes. That being said though, it could be wasting a lot more memory to store these very simple chars, because every single char even ones like 'a', '1', and 'Z' are all 4 bytes. Is there a way to possibly split this up?
 
+**Problem Rust is solving:** Modern software must support Unicode rather than only ASCII. A 1-byte type cannot represent all Unicode characters.
+
+**Tradeoff:** Even simple characters like `'A'` consume 4 bytes, which is larger than necessary for ASCII-only text.
+
+**Mitigation:** Rust separates bytes (`u8`) from characters (`char`) and stores strings as UTF-8, allowing text to remain memory efficient while still supporting full Unicode.
+
 ```
 let c = 'a';
 let x = '1';
