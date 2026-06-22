@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/Functions.md",
+                "file": "Rust/Control Flow.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Functions"
+              "title": "Control Flow"
             }
           }
         ],
@@ -201,9 +201,10 @@
   },
   "active": "225a44497d62515c",
   "lastOpenFiles": [
-    "Rust/Data Types.md",
     "Rust/Functions.md",
+    "Rust/Control Flow.md",
     "Rust/Braindump/(BRAINDUMP) Functions.md",
+    "Rust/Data Types.md",
     "Rust/Braindump/(BRAINDUMP) Variables, Shadowing, Const.md",
     "C++/std vector.md",
     "C++/Templates.md",
