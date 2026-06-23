@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/Control Flow.md",
+                "file": "Database Systems/Relational Algebra.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Control Flow"
+              "title": "Relational Algebra"
             }
           }
         ],
@@ -201,8 +201,14 @@
   },
   "active": "225a44497d62515c",
   "lastOpenFiles": [
-    "Rust/Functions.md",
+    "C++/Chapter 8.md",
+    "Database Systems/Relational Algebra.md",
+    "Database Systems/Pasted image 20260622213515.png",
+    "README.md",
     "Rust/Control Flow.md",
+    "Database Systems",
+    "Untitled",
+    "Rust/Functions.md",
     "Rust/Braindump/(BRAINDUMP) Functions.md",
     "Rust/Data Types.md",
     "Rust/Braindump/(BRAINDUMP) Variables, Shadowing, Const.md",
