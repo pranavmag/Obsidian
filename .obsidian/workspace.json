@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/Ownership.md",
+                "file": "Rust/References and Borrowing.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Ownership"
+              "title": "References and Borrowing"
             }
           },
           {
@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/Braindump/(BRAINDUMP) Ownership.md",
+                "file": "Database Systems/Query Planning & Optimization.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "(BRAINDUMP) Ownership"
+              "title": "Query Planning & Optimization"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -198,14 +199,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "0340811cee18f0c4",
+  "active": "225a44497d62515c",
   "lastOpenFiles": [
+    "Rust/References and Borrowing.md",
+    "Database Systems/Query Planning & Optimization.md",
+    "Database Systems/Relational Algebra.md",
+    "Rust/Braindump/(BRAINDUMP) Ownership.md",
     "Rust/Functions.md",
+    "Computer Architecture/Chapter 5.md",
+    "Computer Architecture/Chapter 4.md",
     "Rust/Ownership.md",
     "Rust/Ownership 1.md",
-    "Rust/Braindump/(BRAINDUMP) Ownership.md",
     "Rust/Braindump/(BRAINDUMP) Functions.md",
-    "Database Systems/Relational Algebra.md",
     "C++/Chapter 8.md",
     "Database Systems/Pasted image 20260622213515.png",
     "README.md",

@@ -150,5 +150,128 @@ SQL Query: (SELECT * FROM R)
 INTERSECT
 (SELECT * FROM S);
 
+### Difference (−)
+
+Generate a relation that contains only the tuples that appear in the first and not second of the input relations.
+
+Syntax: (R − S)
+
+R(a_id, b_id)
+
+| **a_id** | **b_id** |
+| -------- | -------- |
+| a1       | 101      |
+| a2       | 102      |
+| a3       | 103      |
+
+S(a_id, b_id)
+
+| **a_id** | **b_id** |
+| -------- | -------- |
+| a3       | 103      |
+| a4       | 104      |
+| a5       | 105      |
+
+(R − S)
+
+| **a_id** | **b_id** |
+| -------- | -------- |
+| a1       | 101      |
+| a2       | 102      |
+
+SQL Query: (SELECT * FROM R)
+EXCEPT
+(SELECT * FROM S);
+
+### Product (×)
+
+Generate a relation that contains all possible combinations of tuples from the input relations.
+
+Syntax: (R × S)
+
+R(a_id, b_id)
+
+|**a_id**|**b_id**|
+|---|---|
+|a1|101|
+|a2|102|
+|a3|103|
+
+S(a_id, b_id)
+
+|**a_id**|**b_id**|
+|---|---|
+|a3|103|
+|a4|104|
+|a5|105|
+
+(R × S)
+
+|**R.a_id**|**R.b_id**|**S.a_id**|**S.b_id**|
+|---|---|---|---|
+|a1|101|a3|103|
+|a1|101|a4|104|
+|a1|101|a5|105|
+|a2|102|a3|103|
+|a2|102|a4|104|
+|a2|102|a5|105|
+|a3|103|a3|103|
+|a3|103|a4|104|
+|a3|103|a5|105|
+
+SQL Query: SELECT * FROM R CROSS JOIN S;
+
+SQL Query: SELECT * FROM R, S;
+ 
+ Why is this allowed? This was the question I had because it looked like it's just creating more data that doesn't really need to exist. Apparently the answer is that this is useful when doing experiment analysis.
+
+### Join (⋈)
+
+Generate a relation that contains all tuples that are a combination of two tuples (one from each input relation) with a common value(s) for one or more attributes.
+
+Syntax: (R ⋈ S)
+
+R(a_id, b_id)
+
+|**a_id**|**b_id**|
+|---|---|
+|a1|101|
+|a2|102|
+|a3|103|
+
+S(a_id, b_id, val)
+
+|**a_id**|**b_id**|**val**|
+|---|---|---|
+|a3|103|XXX|
+|a4|104|YYY|
+|a5|105|ZZZ|
+
+(R ⋈ S)
+
+|**a_id**|**b_id**|**val**|
+|---|---|---|
+|a3|103|XXX|
+
+SQL Query: SELECT * FROM R NATURAL JOIN S;
+
+SQL Query: SELECT * FROM R JOIN S USING (a_id, b_id);
+
+Best Practice SQL Query: SELECT * FROM R JOIN S ON R.a_id = S.a_id AND R.b_id = S.b_id; 
+
+### Extra Operators
+
+- Rename (ρ)
+    
+- Assignment (R←S)
+    
+- Duplicate Elimination (δ)
+    
+- Aggregation (γ)
+    
+- Sorting (τ)
+    
+- Division (R÷S)
 
 
+The Relational Data Model is the leading data model followed by Document/JSON/XML/Object. One that is coming increasingly popular is the Vector Data Model. 
