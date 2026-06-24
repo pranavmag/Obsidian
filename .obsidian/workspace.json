@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/Braindump/Ownership.md",
+                "file": "Rust/Ownership.md",
                 "mode": "source",
                 "source": false
               },
@@ -200,18 +200,18 @@
   },
   "active": "0340811cee18f0c4",
   "lastOpenFiles": [
+    "Rust/Functions.md",
+    "Rust/Ownership.md",
+    "Rust/Ownership 1.md",
     "Rust/Braindump/(BRAINDUMP) Ownership.md",
     "Rust/Braindump/(BRAINDUMP) Functions.md",
     "Database Systems/Relational Algebra.md",
-    "Rust/Braindump/Ownership.md",
-    "Rust/Ownership.md",
     "C++/Chapter 8.md",
     "Database Systems/Pasted image 20260622213515.png",
     "README.md",
     "Rust/Control Flow.md",
     "Database Systems",
     "Untitled",
-    "Rust/Functions.md",
     "Rust/Data Types.md",
     "Rust/Braindump/(BRAINDUMP) Variables, Shadowing, Const.md",
     "C++/std vector.md",
