@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/(BRAINDUMP) Ownership.md",
+                "file": "Rust/Braindump/Ownership.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "(BRAINDUMP) Ownership"
+              "title": "Ownership"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/Relational Algebra.md",
+                "file": "Rust/Braindump/(BRAINDUMP) Ownership.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Relational Algebra"
+              "title": "(BRAINDUMP) Ownership"
             }
           }
         ]
@@ -200,9 +200,11 @@
   },
   "active": "0340811cee18f0c4",
   "lastOpenFiles": [
+    "Rust/Braindump/(BRAINDUMP) Ownership.md",
     "Rust/Braindump/(BRAINDUMP) Functions.md",
-    "Rust/(BRAINDUMP) Ownership.md",
     "Database Systems/Relational Algebra.md",
+    "Rust/Braindump/Ownership.md",
+    "Rust/Ownership.md",
     "C++/Chapter 8.md",
     "Database Systems/Pasted image 20260622213515.png",
     "README.md",
