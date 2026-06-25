@@ -35,8 +35,7 @@
               "title": "Query Planning & Optimization"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -199,10 +198,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "225a44497d62515c",
+  "active": "0340811cee18f0c4",
   "lastOpenFiles": [
-    "Rust/References and Borrowing.md",
     "Database Systems/Query Planning & Optimization.md",
+    "Rust/References and Borrowing.md",
     "Database Systems/Relational Algebra.md",
     "Rust/Braindump/(BRAINDUMP) Ownership.md",
     "Rust/Functions.md",
