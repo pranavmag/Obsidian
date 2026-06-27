@@ -35,7 +35,8 @@
               "title": "Query Planning & Optimization"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -198,11 +199,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "0340811cee18f0c4",
+  "active": "225a44497d62515c",
   "lastOpenFiles": [
-    "Database Systems/Query Planning & Optimization.md",
     "Rust/References and Borrowing.md",
+    "Database Systems/Query Planning & Optimization.md",
     "Database Systems/Relational Algebra.md",
+    "Compiler Design/Parser.md",
+    "Compiler Design/Lexer.md",
+    "Compiler Design/Pasted image 20260512192703.png",
     "Rust/Braindump/(BRAINDUMP) Ownership.md",
     "Rust/Functions.md",
     "Computer Architecture/Chapter 5.md",
