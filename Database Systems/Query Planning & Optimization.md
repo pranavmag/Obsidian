@@ -61,6 +61,38 @@ Practically: Choose from a subset. The optimizer uses heuristics (rules of thumb
 
 **Timeouts:** Sometimes, the optimizer just sets a timer. If it finds a "good enough" plan in a few milliseconds, it stops searching the space entirely and just runs it!
 
+So like we saw in our earlier example predicate pushdown would be like
+
+$\pi_{ename}(\sigma_{dname='Toy'}(Dept \bowtie Emp))$
+
+to
+
+$\pi_{ename}(Emp \bowtie \sigma_{dname='Toy'}(Dept))$
+
+Pushing σ below ⋈ means the join operates on a smaller relation, so fewer tuples flow upward through the tree.
+
+### Single Relation Query Planning
+
+This is used when the query only operates on one table. There are no joins needed so the optimizer only has to decide two things.
+
+Picking the best access method: The way that we pull the data from disk
+- **Sequential Scan:** Read the entire table page by page. (Best if the table is small or we are returning most of the rows).
+    
+- **Binary Search:** If the data is stored in a sorted order (a clustered index), the database can jump to the middle and quickly halve the search space to find the target.
+    
+- **Index Scan:** Use a B+ Tree index to find the exact disk locations of the requested rows and jump straight to them. (Best if returning a very small percentage of rows).
+
+Predicate Evaluation Ordering: If there are multiple filters (predicates), which one should the database check first? For example, checking `age > 30` might be faster than evaluating a complex math function, so the optimizer will reorder the checks to do the cheapest, most restrictive filters first.
+
+### Multi Relation Query Planning
+
+This is used when there are queries that use joins between multiple tables. As I said earlier, this is an NP-Hard Problem because the number possible join combinations skyrockets as you add more tables.
+
+Bottom-Up: Imagine we're building a lego set, we don't start from the middle or close to the end, we start at the beginning and build up. Same thing with databases it seems like. The optimizer starts with "nothing" (the base tables on the disk) and iteratively assembles them into larger and larger building blocks until it creates the final, complete query plan. It builds the tree from the leaves up to the root.
+
+Top-Down: Imagine we are putting together a puzzle and we have the complete puzzle to reference. We can break down that complete puzzle into the smaller pieces we need to build it. With databases, the optimizer starts with the final logical goal (the root of the tree), then applies a set of transformation rules (like _Predicate Pushdown_ or _Projection Pushdown_) to mutate the tree into "equivalent alternative sub-plans." It explores these different branches downward to calculate costs and find the cheapest path.
+
+
 
 
 
