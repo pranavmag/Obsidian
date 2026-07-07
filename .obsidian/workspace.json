@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/Structs.md",
+                "file": "Rust/Slices.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Structs"
+              "title": "Slices"
             }
           }
         ]
@@ -200,11 +200,12 @@
   },
   "active": "225a44497d62515c",
   "lastOpenFiles": [
-    "Rust/Structs.md",
+    "Rust/Slices.md",
     "Database Systems/Database Design.md",
+    "Rust/Data Types.md",
+    "Rust/Structs.md",
     "Database Systems/Query Planning & Optimization.md",
     "Database Systems/Relational Algebra.md",
-    "Rust/Slices.md",
     "Rust/Functions.md",
     "Rust/Control Flow.md",
     "Pasted image 20260627204542.png",
@@ -223,7 +224,6 @@
     "README.md",
     "Database Systems",
     "Untitled",
-    "Rust/Data Types.md",
     "Rust/Braindump/(BRAINDUMP) Variables, Shadowing, Const.md",
     "C++/std vector.md",
     "C++/Templates.md",
