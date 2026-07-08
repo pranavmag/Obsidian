@@ -37,3 +37,4 @@ Primary Key(toy_id)
 A relationship is an association among two or more entities. For example "Nav works in the Database Department", has the two entities `Nav` (Employee) and `Database Department` (Department) and the connection is the WORKS_IN relationship.
 
 Just like an entity set that is the collection of similar entities, a Relationship Set can be a collection of similar relationships.
+
