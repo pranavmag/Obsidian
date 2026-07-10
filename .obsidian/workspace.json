@@ -200,15 +200,16 @@
   },
   "active": "225a44497d62515c",
   "lastOpenFiles": [
-    "Rust/Structs.md",
+    "Pasted image 20260627204542.png",
+    "Database Systems/Pasted image 20260708224836.png",
     "Database Systems/Database Design.md",
+    "Rust/Structs.md",
     "Rust/Slices.md",
     "Rust/Data Types.md",
     "Database Systems/Query Planning & Optimization.md",
     "Database Systems/Relational Algebra.md",
     "Rust/Functions.md",
     "Rust/Control Flow.md",
-    "Pasted image 20260627204542.png",
     "Rust/References and Borrowing.md",
     "Compiler Design/Parser.md",
     "Compiler Design/Lexer.md",
@@ -231,7 +232,6 @@
     "C++/CMake.md",
     "Computer Architecture/Chapter 1.md",
     "Rust/Braindump",
-    "Template/Note Template.md",
     "Rust"
   ]
 }
