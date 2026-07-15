@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/Database Storage.md",
+                "file": "Database Systems/The Relational Model.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Database Storage"
+              "title": "The Relational Model"
             }
           },
           {
@@ -27,15 +27,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/Structs.md",
+                "file": "Rust/Packages, Crates, Modules.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Structs"
+              "title": "Packages, Crates, Modules"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -198,13 +199,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "225a44497d62515c",
+  "active": "1e15ad027b87b446",
   "lastOpenFiles": [
-    "Database Systems/Database Design.md",
+    "Database Systems/The Relational Model.md",
+    "Rust/Packages, Crates, Modules.md",
+    "Rust/Structs.md",
     "Database Systems/Database Storage.md",
+    "Database Systems/Database Design.md",
     "Pasted image 20260627204542.png",
     "Database Systems/Pasted image 20260708224836.png",
-    "Rust/Structs.md",
     "Rust/Slices.md",
     "Rust/Data Types.md",
     "Database Systems/Query Planning & Optimization.md",
@@ -230,8 +233,6 @@
     "C++/std vector.md",
     "C++/Templates.md",
     "Rust/Variables, Shadowing, Const.md",
-    "C++/CMake.md",
-    "Computer Architecture/Chapter 1.md",
     "Rust/Braindump",
     "Rust"
   ]
