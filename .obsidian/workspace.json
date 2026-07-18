@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/Packages, Crates, Modules.md",
+                "file": "Rust/Ownership.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Packages, Crates, Modules"
+              "title": "Ownership"
             }
           }
         ],
@@ -201,18 +201,19 @@
   },
   "active": "1e15ad027b87b446",
   "lastOpenFiles": [
-    "Database Systems/The Relational Model.md",
+    "Rust/Functions.md",
+    "Rust/Data Types.md",
     "Rust/Packages, Crates, Modules.md",
+    "C++/std vector.md",
+    "Database Systems/The Relational Model.md",
     "Rust/Structs.md",
     "Database Systems/Database Storage.md",
     "Database Systems/Database Design.md",
     "Pasted image 20260627204542.png",
     "Database Systems/Pasted image 20260708224836.png",
     "Rust/Slices.md",
-    "Rust/Data Types.md",
     "Database Systems/Query Planning & Optimization.md",
     "Database Systems/Relational Algebra.md",
-    "Rust/Functions.md",
     "Rust/Control Flow.md",
     "Rust/References and Borrowing.md",
     "Compiler Design/Parser.md",
@@ -230,7 +231,6 @@
     "Database Systems",
     "Untitled",
     "Rust/Braindump/(BRAINDUMP) Variables, Shadowing, Const.md",
-    "C++/std vector.md",
     "C++/Templates.md",
     "Rust/Variables, Shadowing, Const.md",
     "Rust/Braindump",
