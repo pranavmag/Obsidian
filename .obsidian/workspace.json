@@ -27,16 +27,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Rust/Ownership.md",
+                "file": "Rust/Packages, Crates, Modules.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Ownership"
+              "title": "Packages, Crates, Modules"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -93,7 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 268.5
   },
   "right": {
     "id": "639219f8f79f195b",
@@ -199,13 +198,14 @@
       "bases:Create new base": false
     }
   },
-  "active": "1e15ad027b87b446",
+  "active": "225a44497d62515c",
   "lastOpenFiles": [
+    "Rust/Packages, Crates, Modules.md",
+    "Database Systems/The Relational Model.md",
+    "Rust/Ownership.md",
     "Rust/Functions.md",
     "Rust/Data Types.md",
-    "Rust/Packages, Crates, Modules.md",
     "C++/std vector.md",
-    "Database Systems/The Relational Model.md",
     "Rust/Structs.md",
     "Database Systems/Database Storage.md",
     "Database Systems/Database Design.md",
@@ -222,7 +222,6 @@
     "Rust/Braindump/(BRAINDUMP) Ownership.md",
     "Computer Architecture/Chapter 5.md",
     "Computer Architecture/Chapter 4.md",
-    "Rust/Ownership.md",
     "Rust/Ownership 1.md",
     "Rust/Braindump/(BRAINDUMP) Functions.md",
     "C++/Chapter 8.md",

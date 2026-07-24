@@ -68,7 +68,3 @@ mod back_of_house {
 ```
 
 As you can see we can access a function outside of the module by using the `super` keyword.
-
-
-
-
