@@ -83,6 +83,12 @@ So if we try to insert a tuple with a `studid` into `Enrolled` where the corresp
 
 Null values are allowed in a foreign key and don't violate the constraint, but a primary key cannot be a null value because of its inherent nature to uniquely identify a tuple.
 
+#### General Constraint
+
+We can add even more constraints such as adding the constraint that all students in the table must have a GPA > 2.0. This would be known as a domain constraint because it defines the set of permissible `GPA` values more strictly than is possible by simply using a standard domain such as only allowing `Real` values. Current relational database systems support such general constraints in the form of table constraints and assertions.
+
+Table constraints are associated with a single table and checked whenever that table is modified and assertions involve several tables and are checked whenever any of those tables are modified.
+
 
 
 

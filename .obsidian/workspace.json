@@ -200,12 +200,13 @@
   },
   "active": "225a44497d62515c",
   "lastOpenFiles": [
+    "Database Systems/Database Normalization.md",
+    "Database Systems/The Relational Model.md",
+    "Rust/Packages, Crates, Modules.md",
     "Database Systems/Database Design.md",
     "Database Systems/Database Storage.md",
-    "Database Systems/The Relational Model.md",
     "Database Systems/Relational Algebra.md",
     "Database Systems/Query Planning & Optimization.md",
-    "Rust/Packages, Crates, Modules.md",
     "Rust/Ownership.md",
     "Rust/Functions.md",
     "Rust/Data Types.md",
@@ -231,7 +232,6 @@
     "Untitled",
     "Rust/Braindump/(BRAINDUMP) Variables, Shadowing, Const.md",
     "C++/Templates.md",
-    "Rust/Variables, Shadowing, Const.md",
     "Rust/Braindump",
     "Rust"
   ]
