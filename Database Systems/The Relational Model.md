@@ -89,6 +89,22 @@ We can add even more constraints such as adding the constraint that all students
 
 Table constraints are associated with a single table and checked whenever that table is modified and assertions involve several tables and are checked whenever any of those tables are modified.
 
+#### Transactions and Constraints
+
+A program that runs against the database is called a transaction, and it can contain several statements (queries, inserts, updates, etc.) that access the database. Now the thing to consider here is whether or not constraints are checked after each statement within the transaction or right at the end of the transaction itself. 
+
+We know that by default, the constraints are checked after each statement, but that seems a little problematic when it comes to transactions. If we have two insert statements, one on each table, that depend on the existence of one of the fields of the other table, then it would be impossible to get either insert statement to even work because it needs the other insert statement.
+
+The text says that we can defer the constraint checking and that SQL allows a constraint to be in `DEFERRED` or `IMMEDIATE` mode. It seems pretty straightforward as to what each of these modes mean. `DEFERRED` mode has constraint checking postponed until the end of the transaction right before the `COMMIT` whereas `IMMEDIATE` mode has constraint checking after each statement.
+
+I did some extra research on this and I found out that PostgreSQL, Oracle Database, and SQLite among a couple others support deferred constraints but others such as MySQL, MariaDB, and SQL Server among others don't support deferred constraints.
+
+
+
+
+
+
+
 
 
 
