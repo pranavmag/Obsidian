@@ -40,7 +40,7 @@ Just like an entity set that is the collection of similar entities, a Relationsh
 
 A relationship can also have descriptive attributes which is information about the relationship. If we want to say, "Nav works in the Database Department as of 2027" we can add the attribute `since` to `Works_In`
 
-![[Pasted image 20260708224836.png]]
+![[Manages Relationship Set.png]]
 
 We can set key constraints here that can restrict the relationship of fields to be a certain way. A relationship set like `Manages` is able to be one-to-many meaning that one employee can be associated with many departments as a manager whereas each department can only be associated with one employee as its manager. But a relationship set like the `Works_In` relationship set can be many-to-many because an employee is allowed to work in several departments and a department can have several employees. We can also set a restriction that each employee can manage at most one department to the Manages relationship set and then it would be a one-to-one relationship set.
 

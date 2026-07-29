@@ -99,9 +99,77 @@ The text says that we can defer the constraint checking and that SQL allows a co
 
 I did some extra research on this and I found out that PostgreSQL, Oracle Database, and SQLite among a couple others support deferred constraints but others such as MySQL, MariaDB, and SQL Server among others don't support deferred constraints.
 
+### ER Model to Relational Model
+
+#### Entity Set to Table
+
+If we have an entity set with the attributes `ssn, name, lot` we can say that we need a table with fields of `{ssn: string, name: string, lot: integer}`. When we actually create the table we can specify further what we need, like the ssn probably needs to only allow 11 characters and also be the primary key since no two individuals can have the same ssn.
+
+```
+CREATE TABLE Employees (
+	ssn CHAR(11),
+	name CHAR(30),
+	lot INTEGER,
+	PRIMARY KEY (ssn)
+)
+```
+
+#### Relationship Set (without constraints) to Table
+
+![[Ternary Relationship Set.png]]
+
+We can see that there is a `Works_In2` ternary relationship set. This can be expressed as
+
+```
+CREATE TABLE Works_In2 (
+	ssn CHAR(11),
+	did INTEGER,
+	address CHAR(20),
+	since DATE,
+	PRIMARY KEY (ssn, did, address),
+	FOREIGN KEY (ssn) REFERENCES Employees,
+	FOREIGN KEY (did) REFERENCES Departments,
+	FOREIGN KEY (address) REFERENCES Locations
+)
+```
 
 
+So from what I understand, this is describing a relationship set called Works_In2 and we take a field from each table that we are providing a relationship between (ssn, did, address) and having them combined be a primary key, meaning that all three fields cannot be equivalent, but changes within each field can occur like a different ssn with the same department. We use foreign keys so that the table knows which table and primary key field each one has to reference.
 
+#### Relationship Sets with Key Constraints
+
+![[Key Constraint on Manages.png]]
+
+As we can see here, the key constraint is that each department can only have at most one manager. This means that we can't have multiple `ssn` values for the same `did` value. `did` is a key for `Manages`.
+
+```
+CREATE TABLE Manages (
+	ssn CHAR(11),
+	did INTEGER,
+	since DATE,
+	PRIMARY KEY (did),
+	FOREIGN KEY (ssn) REFERENCES Employees,
+	FOREIGN KEY (did) REFERENCES Departments
+)
+```
+
+There is another approach for translating a relationship set with key constraints that is better because it avoids creating a distinct table for the relationship set. The idea is to include the information about the relationship set in the table corresponding to the entity set with the key. This eliminates the need for a separate Manages relation, and queries asking for a department's manager can be answered without combining information from two relations. The only drawback is wasted space from several departments having no managers.
+
+```
+CREATE TABLE DepLMgr (
+	did INTEGER,
+	dname CHAR(20),
+	budget REAL,
+	ssn CHAR(11),
+	since DATE,
+	PRIMARY KEY (did),
+	FOREIGN KEY (ssn) REFERENCES Employees
+)
+```
+
+In the case that there is no manager for a department, `ssn` is allowed to take on null values.
+
+#### Translating Weak Entity Sets
 
 
 
