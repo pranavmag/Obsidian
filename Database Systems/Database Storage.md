@@ -32,6 +32,10 @@ Random access on non-volatile storage is almost always much slower than sequenti
 
 DBMS will want to maximize sequential access because algorithms will try to reduce number of writes to random pages so that data is stored in contiguous blocks. Allocating multiple pages at the same time is called an extent.
 
+### Disk-Oriented DBMS
+
+A database file is on disk and the file is broken up into multiple pages as a way to divide up the data. In memory we have a buffer pool, the memory managed by the DBMS that is used to bring pages from disk into memory. The execution engine is the query engine that executes SQL queries and knows how to read and write data from the buffer pool manager.
+
 
 
 

@@ -55,7 +55,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -200,17 +202,18 @@
   },
   "active": "225a44497d62515c",
   "lastOpenFiles": [
+    "Database Systems/Database Design.md",
+    "Database Systems/The Relational Model.md",
+    "Database Systems/Images/Weak Entity Set.png",
+    "Database Systems/Database Storage.md",
     "Database Systems/Relational Algebra.md",
     "Database Systems/Images/Key Constraint on Manages.png",
-    "Database Systems/The Relational Model.md",
-    "Database Systems/Database Design.md",
     "Database Systems/Database Normalization.md",
     "Database Systems/Images/Ternary Relationship Set.png",
     "Database Systems/Images/Manages Relationship Set.png",
     "Database Systems/Images",
     "Operating Systems/Chapter 1.md",
     "Computer Architecture/Chapter 5.md",
-    "Database Systems/Database Storage.md",
     "Rust/Packages, Crates, Modules.md",
     "Database Systems/Query Planning & Optimization.md",
     "Rust/Ownership.md",

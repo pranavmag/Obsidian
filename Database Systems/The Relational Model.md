@@ -171,7 +171,42 @@ In the case that there is no manager for a department, `ssn` is allowed to take 
 
 #### Translating Weak Entity Sets
 
+A weak entity set always participates in a one-to-many binary relationship. The weak entity only has a partial key, it needs the existence of another table's primary key to be uniquely identified. When an owner entity is deleted, all owned weak entities should be deleted as well.
 
+![[Weak Entity Set.png]]
+
+Here we can see that to uniquely identify a dependent we take the `pname` and the key of the owning entity set `Employees`.
+
+```
+CREATE TABLE Dep_Policy (
+	pname CHAR(20),
+	age INTEGER,
+	cost REAL,
+	ssn CHAR(11),
+	PRIMARY KEY (pname, ssn),
+	FOREIGN KEY (ssn) REFERENCES Employees 
+		ON DELETE CASCADE
+)
+```
+
+### Views
+
+A view a table whose rows are not stored in the database but are computed as needed from a view definition. Let's take the example of the `Students` and `Enrolled` relations and we want to find the names and student id of students who got a grade of B in a course, together with the course id.
+
+```
+CREATE VIEW B-Students (name, sid, course)
+AS SELECT S.name, S.sid, E.cid
+FROM Students S, Enrolled E
+WHERE S.sid = E.studid AND E.grade = 'B';
+```
+
+I can see how this can be useful. Instead of querying this type of data over and over, we can just create a view for it to be used as a quick alias for the select statement. It also makes it easier for us to do further filtering with the data from `B-Students`. It also seems useful if we have lots of data that we break down into multiple views and even views of views. That's how I'm seeing it as of this moment.
+
+It also creates data independence. The user who queries the view will see the fields as name, sid, and course and they don't have to know about the underlying complexities like S.sid, E.cid, etc.
+
+Views are also valuable for security because we can define views that give a group of users just the information that they're allowed to see. For example, we can create a view that allows students to see other students name and age but not their gpa or the underlying Students table.
+
+An updatable view allows modifications (UPDATE, DELETE) to its rows, provided each view row can be unambiguously traced to exactly one row in a single underlying table; this typically requires the view to include the underlying table's primary key and avoid constructs like `DISTINCT` or multiple tables in the `FROM` clause. While all insertable views are updatable, the reverse isn't true: an **insertable view** specifically permits `INSERT` operations, which imposes stricter rules. For instance, views defined with set operators like `UNION`, `INTERSECT`, or `EXCEPT` may allow updates but prohibit inserts because the database cannot determine which base table should receive the new row. Additionally, inserting through a view fails if the view omits the underlying table's primary key or required `NOT NULL` columns, as the system cannot generate valid new rows without them.
 
 
 
