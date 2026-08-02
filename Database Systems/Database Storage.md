@@ -36,6 +36,26 @@ DBMS will want to maximize sequential access because algorithms will try to redu
 
 A database file is on disk and the file is broken up into multiple pages as a way to divide up the data. In memory we have a buffer pool, the memory managed by the DBMS that is used to bring pages from disk into memory. The execution engine is the query engine that executes SQL queries and knows how to read and write data from the buffer pool manager.
 
+### Storage Engine
+
+Local queries coming from clients or from other nodes are executed by the storage engine. It has a couple components.
+
+Transaction manager - Schedules transactions and ensures they cannot leave the database in a logically inconsistent state
+
+Lock manager - Locks on the database objects for the running transactions, ensuring that concurrent operations do not violate physical data integrity
+
+Access methods (storage structures) - Manages access and organizing data on disk, access methods include heap files and storage structures such as B-Trees or LSM Trees
+
+Buffer manager - Caches data pages in memory
+
+Recovery manager - Maintains the operation log and restoring the system state in case of a failure
+
+Transaction and lock managers are responsible for concurrency control, guaranteeing the logical and physical data integrity while ensuring that concurrent operations are executed as efficiently as possible.
+
+### Memory- vs Disk-Based DBMS
+
+In-memory DBMS (main memory DBMS) store data mainly in memory and use the disk for recovery and logging whereas disk-based DBMS store most of the data on disk and use memory for caching disk contents or as a temporary storage.
+
 
 
 

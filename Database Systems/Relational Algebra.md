@@ -275,3 +275,4 @@ Best Practice SQL Query: SELECT * FROM R JOIN S ON R.a_id = S.a_id AND R.b_id = 
 
 
 The Relational Data Model is the leading data model followed by Document/JSON/XML/Object. One that is coming increasingly popular is the Vector Data Model. 
+

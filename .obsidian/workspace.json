@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/The Relational Model.md",
+                "file": "Database Systems/Database Storage.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "The Relational Model"
+              "title": "Database Storage"
             }
           },
           {
@@ -202,11 +202,11 @@
   },
   "active": "225a44497d62515c",
   "lastOpenFiles": [
-    "Database Systems/Database Design.md",
+    "Database Systems/Relational Algebra.md",
     "Database Systems/The Relational Model.md",
+    "Database Systems/Database Design.md",
     "Database Systems/Images/Weak Entity Set.png",
     "Database Systems/Database Storage.md",
-    "Database Systems/Relational Algebra.md",
     "Database Systems/Images/Key Constraint on Manages.png",
     "Database Systems/Database Normalization.md",
     "Database Systems/Images/Ternary Relationship Set.png",
