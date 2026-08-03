@@ -56,6 +56,18 @@ Transaction and lock managers are responsible for concurrency control, guarantee
 
 In-memory DBMS (main memory DBMS) store data mainly in memory and use the disk for recovery and logging whereas disk-based DBMS store most of the data on disk and use memory for caching disk contents or as a temporary storage.
 
+Memory-based DBMS exist for better performance and access granularity. Programing for main memory is also simpler than programming for disk because of the operating system abstracting memory management.
+
+The limiting factors of In-memory databases are RAM volatility and costs. RAM contents are not persistent making them more susceptible to data loss. Ways to combat this usually require more hardware and expertise. Disks are easier to maintain and have significantly lower prices. 
+
+In-memory database systems hold backups on disk. Before each transaction or write operation is completed, the results are written to a sequential log file. From my research, a sequential log file is an append only file where the records of database operations are written one right after the other in the order that they occur. It follows the literal naming of it.
+
+A backup copy of the log contents are stored, taking snapshots every so often so that if a crash occurs the log contents don't need to be replayed from the beginning. Logs can contain many months of information so replaying it from the beginning would take too long. Log records are usually applied to backup in batches and the backup holds a database snapshot for a specific point in time. Any log contents up to that point can be discarded. This is known as checkpointing and reduces recovery times significantly.
+
+
+
+
+
 
 
 
