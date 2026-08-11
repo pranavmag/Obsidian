@@ -64,6 +64,24 @@ In-memory database systems hold backups on disk. Before each transaction or writ
 
 A backup copy of the log contents are stored, taking snapshots every so often so that if a crash occurs the log contents don't need to be replayed from the beginning. Logs can contain many months of information so replaying it from the beginning would take too long. Log records are usually applied to backup in batches and the backup holds a database snapshot for a specific point in time. Any log contents up to that point can be discarded. This is known as checkpointing and reduces recovery times significantly.
 
+### Column- vs Row-Oriented DBMS
+
+Tables can be partitioned either horizontally (storing values belonging to the same row together) or vertically (storing values belonging to the same column together). 
+
+Row-oriented DBMS store data in records/rows with every row having the same set of fields. They are efficient at storing transactional data like user entries, names, and phone numbers. A record can be uniquely identified by the key. Since row-oriented databases access data by row, storing entire rows together improves spatial locality.
+
+Since data on disk is accessed through blocks, a single block will contain all the fields for one record, then go on. So from what I understand, if we have `sid, name, age, email` then all fields associated with the record for sid 1 will be on a block and then if more data can fit then all data for sid 2 will be stored on the same block, and so on.
+
+Column-oriented DBMS store data vertically by column instead of storing it horizontally by row. Values for the same column are stored contiguously on disk instead of rows. Storing values of different columns in separate files or file segments allows efficient queries by column since they can be read in one pass.
+
+Column-oriented databases are great for analytical workloads that compute aggregates, such as finding trends, computing average values, etc. To reconstruct data tuples, some metadata may be preserved to identify each column value to other fields, so each value will hold a key. Some column stores use implicit identifiers (virtual IDs) instead and use the position of the value to map it back to the related values. 
+
+I do tend to see this trend of using virtual versions of things usually in systems performance, I've seen it predominantely in the form of virtual memory where it can make the program think it has unlimited memory to work with but the actual memory is mapped properly later. I assume it's the same with virtual IDs, reducing performance overhead.
+
+### Wide Column Stores
+
+
+
 
 
 

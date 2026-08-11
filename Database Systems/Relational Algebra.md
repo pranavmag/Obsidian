@@ -276,3 +276,14 @@ Best Practice SQL Query: SELECT * FROM R JOIN S ON R.a_id = S.a_id AND R.b_id = 
 
 The Relational Data Model is the leading data model followed by Document/JSON/XML/Object. One that is coming increasingly popular is the Vector Data Model. 
 
+### Division
+
+Division basically asks "Which x values in A are paired with every single y value in B?". Division doesn't have a specific operator that is used so it combines existing operators. What the textbook says first is to find the disqualified x values in A. An x value is disqualified if by attaching a y value from B, we obtain a tuple (x, y) that is not in A. 
+
+![[Disqualified X.png]]
+
+Let me try to break this down. So we start off with taking a projection of only the x values from relation A and doing a cross product with relation B to combine all the x values of relation A with the y values of relation B. We then take the difference of that with the values in relation A to give us the values of (x, y) that do not exist in relation A. Then we do another outer projection of just the x values of those remaining tuples which gives us the disqualified x values.
+
+![[Division Equation.png]]
+
+So the Division equation for A/B is this, ending off with a projection of all the x values in A subtracting the disqualified x values in A to give us the x values in A that are paired with every single y value in B.
