@@ -80,6 +80,19 @@ I do tend to see this trend of using virtual versions of things usually in syste
 
 ### Wide Column Stores
 
+Wide column stores are a bit different, colums are grouped into column families and inside each column family the data is stored row-wise which can be retrieved by a key or a sequence of keys. 
+
+### Data Files and Index Files
+
+A database system wants a reliable way to store data and allow quick access to it, so the files are stored using implementation-specific formats rather than flat files. This allows for storage efficiency, access efficiency, and update efficiency.
+
+Each record in a table can be identified using a search key as we know for example `sid`. These records are located using an index which are auxiliary data structures that allow database systems to locate data records withotu scanning an entire table on every access. Indexes are built using a subset of fields identifying the record.
+
+I had to look up what an auxiliary data structure was and it just means that it's a supporting data structures that performs tasks that help manage, search, or process the primary data more efficiently. It does not store the original data so if it is deleted the database won't be losing data, it exists purely for performance.
+
+Database systems usually separate data files and index files. The data files store data records while the index files store record metadata that is needed to locate records in data files. Files are partitioned into pages, which typically have the size of a single or multiple disk blocks. Pages can be organized as sequences of records or as a slotted pages.
+
+From my Toy DB File Manager project, I recall that disks are block-addressable and pages are byte-addressable so I used offsets to read or write specific data. I will have to see if there are other implementations here in this book.
 
 
 
