@@ -94,6 +94,26 @@ Database systems usually separate data files and index files. The data files sto
 
 From my Toy DB File Manager project, I recall that disks are block-addressable and pages are byte-addressable so I used offsets to read or write specific data. I will have to see if there are other implementations here in this book.
 
+### Data Files
+
+Data files (primary files) can be implemented as index-organized tables (IOT), heap-organized tables (heap tables), or hash-organized tables (hashed files).
+
+Records in heap files don't follow any order specifically but are usually stored in write order so no additional file reorganization or restructuring is needed when new pages are appended. Heap files do need an extra index structure that points to the locations of data records to make them searchable.
+
+In hashed files, records are stored in buckets and the bucket that a record blongs to depends on its hash value of the key. Records in buckets can be stored in append order or sorted by key to improve lookup speed.
+
+IOTs store data records in the index itself and since records are stored in key order, range scans in IOTS can be implemented by sequentially scanning its contents. This method saves at least one disk seek because after traversing the index and locating the searched key we don't have to address a separate file to find the associated data record because the data records are embedded directly within the index's structure. A disk seek is one of the slowest and most expensive operations so this is a benefit.
+
+Although there are some other tradeoffs it seems which makes it so that not all database systems just use IOTs as their default. For example, I looked into it and found out that PostgreSQL uses heap tables as the native storage structure. I looked into potential reasons why and it may be because IOTs have overhead during inserts because of needing to find the correct physical position on the B-tree to maintain the sorted order whereas in heap files data is just appended to the first available free space. So it seems that IOTs may potentially need a lot of reorganizing and such to ensure that the sorted order is correct.
+
+### Index Files
+
+An index is a structure that organizes data records on disk in a way that is efficient for retrieval operations. Index files map keys to locations in data files where the records identified by these keys or primary keys are stored. An index on a primary file is known as a primary index and all other indexes are secondary and they can point directly to the data record or store its primary key. Primary index files hold a unique entry per search key whereas secondary indexes may hold several entries per search key.
+
+If the order of data records follows search key order it is called a clustered index and are usually stored in the same file or in a clustered file where the key order is preserved. The opposite is a non-clustered index.
+
+
+
 
 
 

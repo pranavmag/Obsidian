@@ -35,8 +35,7 @@
               "title": "Relational Calculus"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -201,17 +200,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "80108fa175aaaa69",
+  "active": "225a44497d62515c",
   "lastOpenFiles": [
-    "Database Systems/Database Storage.md",
     "Database Systems/Relational Calculus.md",
+    "Database Systems/Relational Algebra.md",
+    "Database Systems/The Relational Model.md",
+    "Database Systems/Database Storage.md",
+    "Database Systems/Database Design.md",
+    "Rust/Ownership.md",
     "C++/Smart Pointers.md",
     "Rust/Packages, Crates, Modules.md",
-    "Database Systems/The Relational Model.md",
-    "Database Systems/Division Equation.png",
-    "Database Systems/Relational Algebra.md",
+    "Database Systems/Images/Division Equation.png",
     "Database Systems/Images/Disqualified X.png",
-    "Database Systems/Database Design.md",
     "Database Systems/Images/Weak Entity Set.png",
     "Database Systems/Images/Key Constraint on Manages.png",
     "Database Systems/Database Normalization.md",
@@ -221,7 +221,6 @@
     "Operating Systems/Chapter 1.md",
     "Computer Architecture/Chapter 5.md",
     "Database Systems/Query Planning & Optimization.md",
-    "Rust/Ownership.md",
     "Rust/Functions.md",
     "Rust/Data Types.md",
     "C++/std vector.md",
