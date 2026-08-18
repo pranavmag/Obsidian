@@ -80,7 +80,23 @@ I do tend to see this trend of using virtual versions of things usually in syste
 
 ### Wide Column Stores
 
-Wide column stores are a bit different, colums are grouped into column families and inside each column family the data is stored row-wise which can be retrieved by a key or a sequence of keys. 
+Wide column stores are a bit different, colums are grouped into column families and inside each column family the data is stored row-wise which can be retrieved by a key or a sequence of keys.
+
+### Data on External Storage
+
+Disks are the most important external storage devices because they're cheaper than RAM, can store much more data, and maintain persistence. Database systems need to store vast amounts of data so disks are a great choice, however they are slower and harder to access.
+
+Data is stored on external devices such as disk or tapes and fetched into main memory as needed for processing. The unit of information read from or written to a disk is known as a page, usually 4K or 8KB. The cost of page I/O (input from disk to main memory and output from main memory to disk) is substantial compared to typical database operations. It's ideal that database systems minimize this cost as much as possible.
+
+Disks allow us to retrieve any page at pretty much a fixed cost per page but this can be optimized by reading several pages in the order that they are stored physically rather than a random order. 
+
+Tapes are sequential access devices that force us to read one page after another and are mostly used for archive data that isn't needed regularly. I was actually looking into tape storage and found out that AI data stores do use tapes to store any data they receive. Just writing this here as a concept to potentially look into more at another time.
+
+Each record in a file has a unique identifier called a record id (rid) that can be used to identify the disk address of the page containing the record.
+
+Data is read into memory for processing and written to disk for persistent storage by a software layer called the buffer manager. When the files and access methods layer (file layer) needs to process a page, it asks the buffer manager to fetch the page specifying the page's rid. If the page is not already in memory then the buffer manager fetches the page from disk.
+
+Space on disk is managed by the disk space manager, which is able allocate an additional disk page for the file if necessary and gets informed by the files and access methods layer when it no longer needs one of its disk pages.
 
 ### Data Files and Index Files
 
