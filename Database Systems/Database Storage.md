@@ -98,6 +98,8 @@ Data is read into memory for processing and written to disk for persistent stora
 
 Space on disk is managed by the disk space manager, which is able allocate an additional disk page for the file if necessary and gets informed by the files and access methods layer when it no longer needs one of its disk pages.
 
+The file of records is implemented by the files and access methods layer and can be created, destroyed, and have records inserted and deleted from it. It also allows scans allowing u to step through all the records in the file one at a time. Relations are typicall stored as files of records. The file layer stores the records in a file in a collection of disk pages and keeps track of the available space and pages allocated to each file. 
+
 ### Data Files and Index Files
 
 A database system wants a reliable way to store data and allow quick access to it, so the files are stored using implementation-specific formats rather than flat files. This allows for storage efficiency, access efficiency, and update efficiency.
@@ -114,7 +116,7 @@ From my Toy DB File Manager project, I recall that disks are block-addressable a
 
 Data files (primary files) can be implemented as index-organized tables (IOT), heap-organized tables (heap tables), or hash-organized tables (hashed files).
 
-Records in heap files don't follow any order specifically but are usually stored in write order so no additional file reorganization or restructuring is needed when new pages are appended. Heap files do need an extra index structure that points to the locations of data records to make them searchable.
+Records in heap files don't follow any order specifically but are usually stored in write order so no additional file reorganization or restructuring is needed when new pages are appended. This is not to say that heap files are structured tho, they are unstructured from what I know. For example if records 21-30 are deleted, the next inserts will fill up those slots. Heap files do need an extra index structure that points to the locations of data records to make them searchable.
 
 In hashed files, records are stored in buckets and the bucket that a record blongs to depends on its hash value of the key. Records in buckets can be stored in append order or sorted by key to improve lookup speed.
 
@@ -127,6 +129,24 @@ Although there are some other tradeoffs it seems which makes it so that not all 
 An index is a structure that organizes data records on disk in a way that is efficient for retrieval operations. Index files map keys to locations in data files where the records identified by these keys or primary keys are stored. An index on a primary file is known as a primary index and all other indexes are secondary and they can point directly to the data record or store its primary key. Primary index files hold a unique entry per search key whereas secondary indexes may hold several entries per search key.
 
 If the order of data records follows search key order it is called a clustered index and are usually stored in the same file or in a clustered file where the key order is preserved. The opposite is a non-clustered index.
+
+A data entry refers to the records stored in an index file. A data entry with search key k, denoted as k*, contains enough information to locate (one or more) data records with search key value k. There are three main alternatives for what to store as a data entry in an index file:
+
+1. A data entry k* is an actual data record (with search key value k)
+2. A data entry is a (k, rid) pair, where rid is the record id of a data record with search key value k.
+3. A data entry is a (k, rid-list) pair, where rid-list is a list of record ids of data records with search key value k.
+
+Alternative 1 means that your primary index is the data storage (an IOT) and alternatives 2 and 3 mean that your index is a separate auxiliary file (secondary index) and uses either single pointers or a list of pointers to look up data residing elsewhere.
+
+Alternative 2 ensures that no two records can share the same k so the search key is a candidate key (unique), so the index only needs one pointer (the rid) to map that specific key straight to the record in the data file. Alternative 3 is used when the search key is not unique so multiple records can share it so it needs a list of pointers pointing to every single record in the data file that matches it.
+
+### Clustered, Primary, and Secondary indexes
+
+When the file is organized so that the ordering of data records is the same as or close to the ordering of data entries in some index, we say that the index is clustered. So we'll be storing the data by key order. Alternative 1 from earlier is clustered by definition and in practice, whereas alternatives 2 and 3 are stored as unclustered indexes in practice. This is because you cannot rearrange the physical layout that was clustered in alternative 1 without breaking it.
+
+The cost of using an index to answer a range search query can vary tremendously based on whether the index is clustered or not. If the index is clustered, the rids in qualifying data entries point to a contiguous collection of records, and we need to retrieve only a few data pages. If the index is unclustered, each qualifying data entry could contain an rid that points to a distinct data page, leading to as many page I/Os as the number of data entries that match the range selection. This solves our problem that we encountered in the essay for [[Heap File vs Sorting Implementation]].
+
+
 
 
 
