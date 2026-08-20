@@ -146,6 +146,11 @@ When the file is organized so that the ordering of data records is the same as o
 
 The cost of using an index to answer a range search query can vary tremendously based on whether the index is clustered or not. If the index is clustered, the rids in qualifying data entries point to a contiguous collection of records, and we need to retrieve only a few data pages. If the index is unclustered, each qualifying data entry could contain an rid that points to a distinct data page, leading to as many page I/Os as the number of data entries that match the range selection. This solves our problem that we encountered in the essay for [[Heap File vs Sorting Implementation]].
 
+An index on a set of fields that includes the primary key is called a primary index with an another definition being that alternative 1 is a primary index while alternative 2 and 3 are secondary indexes. A primary index is guaranteed to not have duplicates, meaning that two data entries will not have the same value for the search key field but secondary indexes can have duplicates. If the index has no duplicates then it is called a unique index.
+
+### Hash-Based and Tree-Based Indexing
+
+Hash-based indexing uses a mathematical hash function on a search key to instantly map and retrieve records from physical disk "buckets". These are lightning-fast lookups (1-2 I/Os) but they also have a problem when it comes to range scans. A primary table can be structurally organized by this hash function to hold the actual data records (alternative 1), while secondary hash indexes can store (key, rid) pairs (alternative 2) that point back to those main records. While highly efficient for point queries, the search keys do not have to be unique, and searching for data without providing the exact key forces a full file scan.
 
 
 
