@@ -152,6 +152,10 @@ An index on a set of fields that includes the primary key is called a primary in
 
 Hash-based indexing uses a mathematical hash function on a search key to instantly map and retrieve records from physical disk "buckets". These are lightning-fast lookups (1-2 I/Os) but they also have a problem when it comes to range scans. A primary table can be structurally organized by this hash function to hold the actual data records (alternative 1), while secondary hash indexes can store (key, rid) pairs (alternative 2) that point back to those main records. While highly efficient for point queries, the search keys do not have to be unique, and searching for data without providing the exact key forces a full file scan.
 
+Tree-based indexing (like B+ trees) organizes record hierarchically, using non-leaf nodes strictly as navigational signposts to direct searches. These routing nodes contain search key values and pointers that guide queries down the correct subtree based on simple comparison conditions. The search path always starts at the root and descends to the leaf level, where the actual data entries are exclusively stored in physical order.
+
+Every path from the root to a leaf is the exact same length, and all leaf pages are tied together in a doubly-linked list to allow quick sequential range scans. Because each routing node holds a massive number of pointers (a high fan-out, F), a tree of height h can index approximately F^h leaf pages. This keeps the tree incredibly flat, allowing the database to pinpoint a record out of hundreds of millions with just 3-4 disk I/Os which is much better than binary searches on a flat sorted file. Also the root node and potentially some of the top non-leaf nodes are stored in the buffer pool because it is frequently accessed.
+
 
 
 

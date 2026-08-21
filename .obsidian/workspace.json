@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/Oxford Method Essays/Tree Structure vs Sequential Sorted Flat-File.md",
+                "file": "Database Systems/Query Evaluation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Tree Structure vs Sequential Sorted Flat-File"
+              "title": "Query Evaluation"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/Oxford Method Essays/Heap File vs Sorting Implementation.md",
+                "file": "Database Systems/Oxford Method Essays/Tree Structure vs Sequential Sorted Flat-File.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Heap File vs Sorting Implementation"
+              "title": "Tree Structure vs Sequential Sorted Flat-File"
             }
           }
         ]
@@ -203,6 +203,7 @@
   "active": "225a44497d62515c",
   "lastOpenFiles": [
     "Database Systems/Database Storage.md",
+    "Database Systems/Query Evaluation.md",
     "Database Systems/Oxford Method Essays/Tree Structure vs Sequential Sorted Flat-File.md",
     "Database Systems/Oxford Method Essays/Heap File vs Sorting Implementation.md",
     "C++/Concurrency.md",
@@ -237,7 +238,6 @@
     "Compiler Design/Parser.md",
     "Compiler Design/Lexer.md",
     "Compiler Design/Pasted image 20260512192703.png",
-    "Rust/Braindump/(BRAINDUMP) Ownership.md",
     "Database Systems/Pasted image 20260622213515.png",
     "Database Systems",
     "Untitled",
