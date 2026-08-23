@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/Query Evaluation.md",
+                "file": "Database Systems/Oxford Method Essays/File Scan vs Index Access Paths.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Query Evaluation"
+              "title": "File Scan vs Index Access Paths"
             }
           },
           {
@@ -202,14 +202,15 @@
   },
   "active": "225a44497d62515c",
   "lastOpenFiles": [
+    "Database Systems/Oxford Method Essays/Tree Structure vs Sequential Sorted Flat-File.md",
+    "Database Systems/Oxford Method Essays/File Scan vs Index Access Paths.md",
+    "Database Systems/Query Evaluation.md",
     "Database Systems/Query Planning & Optimization.md",
     "Database Systems/Relational Calculus.md",
     "Database Systems/Relational Algebra.md",
-    "Database Systems/Query Evaluation.md",
     "Pasted image 20260821190702.png",
     "Database Systems/The Relational Model.md",
     "Database Systems/Database Storage.md",
-    "Database Systems/Oxford Method Essays/Tree Structure vs Sequential Sorted Flat-File.md",
     "Database Systems/Oxford Method Essays/Heap File vs Sorting Implementation.md",
     "C++/Concurrency.md",
     "Database Systems/Oxford Method Essays",

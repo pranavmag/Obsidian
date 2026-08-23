@@ -63,5 +63,13 @@ In contrast, a tree index like a B+ tree can match a CNF selection if there is a
 
 When we create an index on (rname, bid, sid), the database sorts these columns in a hierachical chain: primary sort (rname), secondary sort (bid), tertiary sort (sid). This entire tree is sorted alphabetically by the sailor's first name which is why it must be included in the selection condition.
 
-If we have an index on the search key (bid, sid) and the selection condition `rname = 'Nav' AND bid = 5 AND sid = 3`, we can use the index to retrieve tuples that satisfy `bid = 5 AND sid = 3`. These are the primary conjuncts
+If we have an index on the search key (bid, sid) and the selection condition `rname = 'Nav' AND bid = 5 AND sid = 3`, we can use the index to retrieve tuples that satisfy `bid = 5 AND sid = 3`. These are the primary conjuncts and the number of tuples that satisfy these conjuncts (and whether or not the index is clustered) determines the amount of pages retrieved. The index being clustered or not matters because if it is unclustered, depending on the range it may have to scan a large percent of the table, which in that case a full table scan might just be performed instead to grab all pages. The additional condition on rname will then be applied to each retrieved tuple and will eliminate some of the retrieved tuples from the result.
+
+#### Selectivity of Access Paths
+
+The selectivity of an access path is the number of pages retrieved if we use this access path to retrieve al desired tuples, and the most selective access path is the one that retrieves the fewest pages. Each primary conjunct acts a filter on the table and the fraction of tuples in the table that satisfy a given conjunct is called the reduction factor. If there are several primary conjucts then the product of their reduction factors gives the fraction of tuples that satisfy all of them. For an exact match using a full search key, this is simply 1/NKeys. For composite keys, the optimizer assumes statistical independence and multiplies the individual reduction factors of each matched conjunct together which is NPages(Sailors) * 1/NKeys(H). If the system catalog lacks distinct-value statistics for a specific column, the engine prevents the calculation from failing by substituting a hardcoded default (traditionally 1/10).
+
+For range queries (e.g., `day > value`), the optimizer calculates the reduction factor by assuming uniform data distribution and taking the ratio of the requested range over the total index range: $\frac{High(T) - value}{High(T) - Low(T)}$. Once the final reduction factor is determined, the physical I/O cost hinges entirely on disk layout. If the index is clustered, the factor is simply multiplied by the total number of pages ($NPages$); if unclustered, the optimizer pessimistically assumes it must execute one random disk page read for every single tuple retrieved and probably just opts to do a full table scan.
+
+
 
