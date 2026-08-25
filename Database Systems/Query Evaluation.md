@@ -71,5 +71,15 @@ The selectivity of an access path is the number of pages retrieved if we use thi
 
 For range queries (e.g., `day > value`), the optimizer calculates the reduction factor by assuming uniform data distribution and taking the ratio of the requested range over the total index range: $\frac{High(T) - value}{High(T) - Low(T)}$. Once the final reduction factor is determined, the physical I/O cost hinges entirely on disk layout. If the index is clustered, the factor is simply multiplied by the total number of pages ($NPages$); if unclustered, the optimizer pessimistically assumes it must execute one random disk page read for every single tuple retrieved and probably just opts to do a full table scan.
 
+### Algorithms for Relational Operations
+
+As we know, for a selection if the index is clustered the amount of I/Os are significantly less than the I/Os for a unclustered index. It is probably cheaper to scan the entire table instead of using the unclustered index if over 5% of the tuples are to be retrieved.
+
+For a projection, the index being unclustered does not matter if the columns we are retrieving is what the index is on. We can just do an index-only scan if that's the case. We just mostly have to be concerned about whether or not duplicates are returned. If the query has the `DISTINCT` keyword then we use partitioning. Let's say we want to get (sid, bid) by projecting from `Reserves`. We can partition by scanning Reserves to obtain (sid, bid) pairs and sorting these pairs using (sid, bid) as the sort key. We can then scan the sorted pairs and easily discard duplicates, which are now adjacent. This usually takes about 2-3 passes, the optimized way would be one pass to read the table and the (sid, bid) pairs are written out so all other irrelevant columns are disregarded and then the second pass to read the table again and remove the duplicates.
+
+
+
+
+
 
 

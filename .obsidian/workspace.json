@@ -1,14 +1,28 @@
 {
   "main": {
-    "id": "ced153ccc9766770",
+    "id": "943c7c0fe5137387",
     "type": "split",
     "children": [
       {
-        "id": "68bd46790f13b3de",
+        "id": "88c070a062d393fc",
         "type": "tabs",
         "children": [
           {
-            "id": "225a44497d62515c",
+            "id": "e8b0ad5deefd378f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Database Systems/Query Evaluation.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Query Evaluation"
+            }
+          },
+          {
+            "id": "8d2dc872b40af000",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,20 +34,6 @@
               "icon": "lucide-file",
               "title": "File Scan vs Index Access Paths"
             }
-          },
-          {
-            "id": "80108fa175aaaa69",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Database Systems/Oxford Method Essays/Tree Structure vs Sequential Sorted Flat-File.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Tree Structure vs Sequential Sorted Flat-File"
-            }
           }
         ]
       }
@@ -41,15 +41,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "4b2356b0c3151910",
+    "id": "3820222431a2bebd",
     "type": "split",
     "children": [
       {
-        "id": "eb8d15e5f3ef9cf0",
+        "id": "c03b25cc21212166",
         "type": "tabs",
         "children": [
           {
-            "id": "021d122aa22f057c",
+            "id": "7626e9bf69ad85c8",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -64,7 +64,7 @@
             }
           },
           {
-            "id": "0c75023170a1c6e7",
+            "id": "b51098a5313ef675",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -81,11 +81,14 @@
             }
           },
           {
-            "id": "041149762d70c511",
+            "id": "b461a05679eb4958",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {},
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
               "icon": "lucide-bookmark",
               "title": "Bookmarks"
             }
@@ -94,23 +97,23 @@
       }
     ],
     "direction": "horizontal",
-    "width": 268.5
+    "width": 300
   },
   "right": {
-    "id": "639219f8f79f195b",
+    "id": "9b42caf648b8fdd3",
     "type": "split",
     "children": [
       {
-        "id": "a033ea5fae07b671",
+        "id": "5ac2dfe03c9929c4",
         "type": "tabs",
         "children": [
           {
-            "id": "f27415d5a55b0ba7",
+            "id": "bf8cd92d5b736b9d",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "C++/Smart Pointers.md",
+                "file": "Database Systems/Projects/Toy DB Storage Engine/Toy DB Storage Engine.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,25 +123,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Smart Pointers"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "e19409b857ca380b",
+            "id": "c89d5e770352b61b",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "C++/Smart Pointers.md",
+                "file": "Database Systems/Projects/Toy DB Storage Engine/Toy DB Storage Engine.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Smart Pointers"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "edc75dfc2d1404ad",
+            "id": "f8e42acba5701d13",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -153,7 +156,7 @@
             }
           },
           {
-            "id": "9a0edb6124acb6b7",
+            "id": "d397785fdd5db776",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -167,18 +170,18 @@
             }
           },
           {
-            "id": "e6d350d1e7b919e5",
+            "id": "d9aa70410b8b7e23",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "C++/Smart Pointers.md",
+                "file": "Database Systems/Projects/Toy DB Storage Engine/Toy DB Storage Engine.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Smart Pointers"
+              "title": "Outline"
             }
           }
         ]
@@ -190,59 +193,23 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-git:Open Git source control": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "225a44497d62515c",
+  "active": "e8b0ad5deefd378f",
   "lastOpenFiles": [
-    "Database Systems/Oxford Method Essays/Tree Structure vs Sequential Sorted Flat-File.md",
+    "Database Systems/Projects/Toy DB Storage Engine/Toy DB Storage Engine.md",
+    "Database Systems/Projects/Toy DB Storage Engine/Planning.md",
     "Database Systems/Oxford Method Essays/File Scan vs Index Access Paths.md",
+    "Database Systems/Projects/Toy DB Storage Engine",
     "Database Systems/Query Evaluation.md",
-    "Database Systems/Query Planning & Optimization.md",
-    "Database Systems/Relational Calculus.md",
-    "Database Systems/Relational Algebra.md",
-    "Pasted image 20260821190702.png",
-    "Database Systems/The Relational Model.md",
-    "Database Systems/Database Storage.md",
-    "Database Systems/Oxford Method Essays/Heap File vs Sorting Implementation.md",
-    "C++/Concurrency.md",
-    "Database Systems/Oxford Method Essays",
-    "Database Systems/Database Design.md",
-    "C++/CMake.md",
-    "Rust/Ownership.md",
-    "C++/Smart Pointers.md",
-    "Rust/Packages, Crates, Modules.md",
-    "Database Systems/Images/Division Equation.png",
-    "Database Systems/Images/Disqualified X.png",
-    "Database Systems/Images/Weak Entity Set.png",
-    "Database Systems/Images/Key Constraint on Manages.png",
-    "Database Systems/Database Normalization.md",
-    "Database Systems/Images/Ternary Relationship Set.png",
-    "Database Systems/Images/Manages Relationship Set.png",
-    "Database Systems/Images",
-    "Operating Systems/Chapter 1.md",
-    "Computer Architecture/Chapter 5.md",
-    "Rust/Functions.md",
-    "Rust/Data Types.md",
-    "C++/std vector.md",
-    "Rust/Structs.md",
-    "Pasted image 20260627204542.png",
-    "Rust/Slices.md",
-    "Rust/Control Flow.md",
-    "Rust/References and Borrowing.md",
-    "Compiler Design/Parser.md",
-    "Compiler Design/Pasted image 20260512192703.png",
-    "Database Systems/Pasted image 20260622213515.png",
-    "Database Systems",
-    "Untitled",
-    "Rust/Braindump",
-    "Rust"
+    "Database Systems/Projects"
   ]
 }
