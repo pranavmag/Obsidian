@@ -14,4 +14,49 @@ The buffer pool can get full so to make room for a new page, the DBMS has to dec
 
 Another method is using the clock algorithm. Each page has a reference bit and when a page is accessed its bit is set to 1. When the buffer pool is full or a query asks for a page from the disk that isn't currently in memory, then it sweeps through the pages in a circular buffer with a "clock hand" that sweeps over pages in order. It checks the page's bit for whether or not it is set to 1. If it is set to 1 then it sets it to 0 and moves on, if it is at 0 already then it evicts the page. In strict LRU, just reading a page requires acquiring an Exclusive Latch to safely move linked-list pointers around. In CLOCK, reading a page just means flipping an integer from `0` to `1`. Because nothing is moving around in the data structure, dozens of threads can read pages and flip bits simultaneously with almost zero locking overhead. I might honestly try to implement this one just straight out, it seems much more elegant than LRU and solves its latch contention problem.
 
+### Design
+
+The Page Table shouldnt actually do much other than keep track of the mappings we have between pages and frames. It shouldn't add pages to a frame or evict them or anything like that. I think the best way to do it is using a hashmap (pageid -> frameid).
+
+PageTable
+└── hashmap (page_id -> frame_id)
+
+PageTable
+├── add mapping
+├── look up mapping
+└── remove mapping
+
+
+The Buffer Pool has many frames and each frame holds a page. A frame of course needs its id and also the actual Page to put it in, as well as some additional meta-data like the pin_count which is a reference counter that tracks the number of threads or requestors currently accessing a specific page stored in a frame. It also should store a boolean flag that indicates whether a page has been modified while in the frame.
+
+Frame
+├── frame_id
+├── Page
+├── pin_count
+└── is_dirty
+
+Frame
+├── access page
+├── access frame_id
+├── access/modify pin_count
+└── access/modify dirty state
+
+
+The Clock Replacer should know two things: the reference bit per frame and a clock-hand position.
+
+ClockReplacer
+├── reference bits per frame (std::vector<uint8_t>)
+└── clock hand
+
+
+The Buffer Pool should know the page, the frame to put it in, whether or not the Buffer Pool is full, be able to update the Page Table, and ask the Clock for a page to evict.
+
+BufferPoolManager
+├── chooses frame
+├── loads page
+├── updates PageTable
+└── asks Clock for a victim
+
+
+
 
