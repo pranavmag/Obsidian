@@ -16,6 +16,17 @@ Another method is using the clock algorithm. Each page has a reference bit and w
 
 ### Design
 
+A Page should be an array of bytes for its data and should have a page_id.
+
+Page
+├── page_id
+└── array of bytes (data)
+
+Page
+├── access data
+└── access page_id
+
+
 The Page Table shouldnt actually do much other than keep track of the mappings we have between pages and frames. It shouldn't add pages to a frame or evict them or anything like that. I think the best way to do it is using a hashmap (pageid -> frameid).
 
 PageTable
@@ -42,11 +53,14 @@ Frame
 └── access/modify dirty state
 
 
-The Clock Replacer should know two things: the reference bit per frame and a clock-hand position.
+The Clock Replacer should know two things: the reference bit per frame and a clock-hand position. It should iterate through the frames and have the clock hand going around, and once the clock hand reaches the starting position without finding a page to evict we should return something that represents none. The Clock Replacer should check if a frame is currently pinned and whether or not the reference bit is 1. If it is 1, set the reference bit to 0 and if it is 0 already then evict the page.
 
 ClockReplacer
 ├── reference bits per frame (std::vector<uint8_t>)
 └── clock hand
+
+ClockReplacer
+└── find victim (iterate through frames)
 
 
 The Buffer Pool should know the page, the frame to put it in, whether or not the Buffer Pool is full, be able to update the Page Table, and ask the Clock for a page to evict.
