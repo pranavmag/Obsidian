@@ -63,18 +63,20 @@ ClockReplacer
 └── find victim (iterate through frames)
 
 
-The Buffer Pool should know the page, the frame to put it in, whether or not the Buffer Pool is full, be able to update the Page Table, and ask the Clock for a page to evict.
+The Buffer Pool should know the page, the frame to put it in, whether or not the Buffer Pool is full, be able to update the Page Table, and ask the Clock for a page to evict. It should be able to handle pinning of pages and flushing of pages.
 
 BufferPoolManager
 ├── array of frames
 ├── page_table
+├── disk_manager
 └── clock_replacer
 
 BufferPoolManager
-├── chooses frame
-├── loads page
-├── updates PageTable
-└── asks Clock for a victim
+├── cache a frame
+├── fetch page
+├── unpin page
+├── flush page
+└── flush all pages
 
 
 

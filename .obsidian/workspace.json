@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/Query Evaluation.md",
+                "file": "Database Systems/Projects/Buffer Pool/Planning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Query Evaluation"
+              "title": "Planning"
             }
           },
           {
@@ -217,12 +217,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7626e9bf69ad85c8",
+  "active": "e8b0ad5deefd378f",
   "lastOpenFiles": [
+    "Database Systems/Projects/Buffer Pool/BufferPool Manager v1.md",
+    "Database Systems/Projects/Buffer Pool/Planning.md",
+    "Database Systems/Query Evaluation.md",
+    "Rust/Traits and Generics.md",
     "Database Systems/Images/Query Evaluation Plan.png",
     "Database Systems/Images/Relational Algebra Expression.png",
     "Database Systems/Images/Relational Algebra Tree.png",
-    "Database Systems/Query Evaluation.md",
     "Pasted image 20260821190702.png",
     "Database Systems/Database Normalization.md",
     "Database Systems/Database Storage.md",
@@ -230,12 +233,10 @@
     "Database Systems/Relational Calculus.md",
     "Database Systems/Relational Algebra.md",
     "Database Systems/The Relational Model.md",
-    "Rust/Traits and Generics.md",
     "Database Systems/Oxford Method Essays/Index Nested Loop Joins.md",
     "Rust/Braindump/(BRAINDUMP) Functions.md",
     "Rust/Braindump/(BRAINDUMP) Variables, Shadowing, Const.md",
     "Rust/Braindump/(BRAINDUMP) Ownership.md",
-    "Database Systems/Projects/Buffer Pool/Planning.md",
     "C++/Smart Pointers.md",
     "Database Systems/Projects/Buffer Pool/What I Need To Implement.md",
     "Database Systems/Projects/Buffer Pool",
