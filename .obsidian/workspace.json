@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/Projects/Buffer Pool/Planning.md",
+                "file": "Database Systems/Query Evaluation.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Planning"
+              "title": "Query Evaluation"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/Oxford Method Essays/Index Nested Loop Joins.md",
+                "file": "Rust/Traits and Generics.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Index Nested Loop Joins"
+              "title": "Traits and Generics"
             }
           },
           {
@@ -217,17 +217,29 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e8b0ad5deefd378f",
+  "active": "7626e9bf69ad85c8",
   "lastOpenFiles": [
-    "Database Systems/Projects/Buffer Pool/What I Need To Implement.md",
-    "Database Systems/Projects/Buffer Pool/Planning.md",
+    "Database Systems/Images/Query Evaluation Plan.png",
+    "Database Systems/Images/Relational Algebra Expression.png",
+    "Database Systems/Images/Relational Algebra Tree.png",
     "Database Systems/Query Evaluation.md",
-    "Database Systems/Projects/Buffer Pool",
-    "C++/Smart Pointers.md",
-    "C++/Move Semantics.md",
-    "Database Systems/Oxford Method Essays/Index Nested Loop Joins.md",
     "Pasted image 20260821190702.png",
+    "Database Systems/Database Normalization.md",
     "Database Systems/Database Storage.md",
+    "Database Systems/Database Design.md",
+    "Database Systems/Relational Calculus.md",
+    "Database Systems/Relational Algebra.md",
+    "Database Systems/The Relational Model.md",
+    "Rust/Traits and Generics.md",
+    "Database Systems/Oxford Method Essays/Index Nested Loop Joins.md",
+    "Rust/Braindump/(BRAINDUMP) Functions.md",
+    "Rust/Braindump/(BRAINDUMP) Variables, Shadowing, Const.md",
+    "Rust/Braindump/(BRAINDUMP) Ownership.md",
+    "Database Systems/Projects/Buffer Pool/Planning.md",
+    "C++/Smart Pointers.md",
+    "Database Systems/Projects/Buffer Pool/What I Need To Implement.md",
+    "Database Systems/Projects/Buffer Pool",
+    "C++/Move Semantics.md",
     "Database Systems/Query Planning & Optimization.md",
     "Database Systems/Projects/Sort Merge Join Implementation/Sort-Merge Join Algorithm.md",
     "Template/Oxford Essay Template.md",

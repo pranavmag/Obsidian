@@ -83,6 +83,35 @@ Sort-Merge Join (SMJ) is a bulk processing algorithm designed to efficiently joi
 
 Another method is a Hash Join which involves going through all the values in one table and applying a hash function to each value to create a hash table, then going through the second table and probing the hash for each value.
 
+### Query Evaluation Plans
+
+A query evaluation plan consists of an extended relational algebra tree with additional annotations at each node indicating the access methods to use for each table and the implementation method to use for each relational operator.
+
+```
+SELECT S.sname
+FROM Reserves R, Sailors S
+WHERE R.sid = S.sid
+AND R.bid = 100 AND S.rating > 5
+```
+
+![[Relational Algebra Expression.png]]
+
+![[Relational Algebra Tree.png]]
+
+![[Query Evaluation Plan.png]]
+
+#### Multi-operator Queries: Pipelined Evaluation
+
+When a query is composed of several operators, sometimes the result of one operator is pipelined to another operator without creating a temporary table to hold the intermediate result. This is great with nested loops join because we are evaluating one tuple at a time so it the intermediate result of a projection and selection don't matter so we pipeline them all the way through. But if we had something like aggregations, it works on the whole data set at once rather than by individual tuples, so pipelining is not possible in those kinds of situations. Those are known as Blocking Operators where the pipeline breaks, whereas the ones that work for pipelining are known as Streaming Operators.
+
+#### The Iterator Interface
+
+The Volcano Iterator Model is the standard architecture for executing query plans by wrapping every relational operator (like joins, table scans, or indexes) in a uniform interface. In a C++ engine, this is typically implemented as a virtual base class requiring three specific functions: `open()` to initialize state and allocate memory, `get_next()` to request the next tuple, and `close()` to clean up resources. Because every node exposes the exact same interface, a parent node never needs to know _how_ its child fetches data. This abstraction naturally supports both pipelined (streaming) execution—where operators like selections pass tuples up the tree one by one in $O(1)$ memory—and materialized (blocking) execution, where operations like sorting or aggregation secretly halt the pipeline to build a temporary table before yielding their first tuple.
+
+
+
+
+
 
 
 

@@ -66,6 +66,11 @@ ClockReplacer
 The Buffer Pool should know the page, the frame to put it in, whether or not the Buffer Pool is full, be able to update the Page Table, and ask the Clock for a page to evict.
 
 BufferPoolManager
+├── array of frames
+├── page_table
+└── clock_replacer
+
+BufferPoolManager
 ├── chooses frame
 ├── loads page
 ├── updates PageTable
