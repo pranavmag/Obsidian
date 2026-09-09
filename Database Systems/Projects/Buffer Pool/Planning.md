@@ -78,6 +78,35 @@ BufferPoolManager
 ├── flush page
 └── flush all pages
 
+### Concurrency
+
+Two threads should be allowed to call FetchPage(3) concurrently. The BPM must synchronize them so page 3 only gets loaded once.
+
+One thread should be allowed to call FetchPage() while another thread calls UnpinPage() but the pin count does need synchronization. A lost update hazard could occur if it doesn't have synchronization.
+
+```
+Thread A: read 1
+Thread B: read 1
+
+Thread A: calculate 2 (fetch 1 + 1 = 2)
+Thread B: calculate 0 (unpin 1 - 1 = 0)
+
+Thread A: write 2
+Thread B: write 0 // Thread A's update is lost because B wrote last
+```
+
+We can use either atomic types or a mutex to resolve it.
+
+The same issue occurs with dirty state for pages so it also needs synchronization. So both pin count and dirty flag are shared state.
+
+Eviction of a page can't happen while another thread is using/modifying the frame, this is intuitive because if the pin count is greater than 0 it can't be evicted anyways. So a dirty unpinned page can be evicted but must be flushed first of course.
+
+Shared state requiring protection: page table, frame metadata, pin count, dirty flag, clock state, and page contents
+
+Operations requiring coordinated/atomic state transitions: FetchPage, UnpinPage, victim selection + eviction, FlushPage
+
+
+
 
 
 
