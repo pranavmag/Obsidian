@@ -105,6 +105,42 @@ Shared state requiring protection: page table, frame metadata, pin count, dirty 
 
 Operations requiring coordinated/atomic state transitions: FetchPage, UnpinPage, victim selection + eviction, FlushPage
 
+#### Page
+
+Okay so what we likely need is a reader-writer lock that allows any amount of threads to read shared data simultaneously but restricts write access to a single thread at a time. These locks also usually include ways to prevent writer starvation which is where writers wait indefinitely for readers to finish. I think I might use a shared mutex for this.
+
+One thing is that now we can't make our Frames move pages because if our Page object contains a mutex member they won't be able to be copyable or movable anymore. Also because our Frames depend on page as a member we'll likely have to use a container that owns non-movable Frames so probably a unique_ptr for anything that uses frames.
+
+#### Buffer Pool Manager
+
+Our Page latch protects page contents but we still need a separate mutex for things like
+
+```
+page_table_
+frame_array_ metadata
+pin counts
+dirty flags
+clock state
+frame reassignment
+```
+
+So I'll add a mutex to buffer pool manager and use lock guards for each function.
+
+A caller must release its Page read/write latch **before** calling UnpinPage(). The Buffer Pool Manager uses the lock order `BPM mutex -> Page latch`. If the reverse happens then
+
+```
+Thread A                        Thread B
+
+holds Page write latch         holds BPM mutex
+
+calls UnpinPage()              calls FlushPage()
+waits for BPM                  waits for Page latch
+
+DEADLOCK
+```
+
+
+
 
 
 
