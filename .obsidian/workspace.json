@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/Projects/Buffer Pool/Planning.md",
+                "file": "Database Systems/Projects/Buffer Pool/Buffer Pool Manager v2.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Planning"
+              "title": "Buffer Pool Manager v2"
             }
           },
           {
@@ -219,11 +219,15 @@
   },
   "active": "e8b0ad5deefd378f",
   "lastOpenFiles": [
+    "Database Systems/Projects/Heap File/Planning.md",
+    "Database Systems/Projects/Buffer Pool/Buffer Pool Manager v1.md",
+    "Database Systems/Projects/Buffer Pool/Buffer Pool Manager v2.md",
+    "Database Systems/Oxford Method Essays/Heap File vs Sorting Implementation.md",
+    "Database Systems/Projects/Heap File",
+    "Database Systems/Projects/Buffer Pool/Planning.md",
     "Database Systems/External Sorting.md",
     "Database Systems/Query Evaluation.md",
     "Database Systems/Query Planning & Optimization.md",
-    "Database Systems/Projects/Buffer Pool/Planning.md",
-    "Database Systems/Projects/Buffer Pool/BufferPool Manager v1.md",
     "Rust/Traits and Generics.md",
     "Database Systems/Images/Query Evaluation Plan.png",
     "Database Systems/Images/Relational Algebra Expression.png",
@@ -246,9 +250,7 @@
     "Database Systems/Projects/Sort Merge Join Implementation/Sort-Merge Join Algorithm.md",
     "Template/Oxford Essay Template.md",
     "Database Systems/Oxford Method Essays/File Scan vs Index Access Paths.md",
-    "Database Systems/Oxford Method Essays/Heap File vs Sorting Implementation.md",
     "Database Systems/Projects/Toy DB Storage Engine/Planning.md",
-    "Database Systems/Projects/Toy DB Storage Engine/Toy DB Storage Engine.md",
     "Database Systems/Projects/Sort Merge Join Implementation",
     "Database Systems/Projects/Toy DB Storage Engine",
     "Database Systems/Projects"
