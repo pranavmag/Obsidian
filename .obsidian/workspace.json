@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/Projects/Buffer Pool/Buffer Pool Manager v2.md",
+                "file": "Database Systems/Projects/Heap File/Planning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Buffer Pool Manager v2"
+              "title": "Planning"
             }
           },
           {
@@ -219,9 +219,9 @@
   },
   "active": "e8b0ad5deefd378f",
   "lastOpenFiles": [
+    "Database Systems/Projects/Buffer Pool/Buffer Pool Manager v2.md",
     "Database Systems/Projects/Heap File/Planning.md",
     "Database Systems/Projects/Buffer Pool/Buffer Pool Manager v1.md",
-    "Database Systems/Projects/Buffer Pool/Buffer Pool Manager v2.md",
     "Database Systems/Oxford Method Essays/Heap File vs Sorting Implementation.md",
     "Database Systems/Projects/Heap File",
     "Database Systems/Projects/Buffer Pool/Planning.md",
