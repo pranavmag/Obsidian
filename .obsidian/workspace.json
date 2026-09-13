@@ -217,14 +217,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e8b0ad5deefd378f",
+  "active": "7626e9bf69ad85c8",
   "lastOpenFiles": [
+    "Database Systems/Images/Slotted Page.png",
+    "Database Systems/Projects/Buffer Pool/Planning.md",
     "Database Systems/Projects/Buffer Pool/Buffer Pool Manager v2.md",
-    "Database Systems/Projects/Heap File/Planning.md",
     "Database Systems/Projects/Buffer Pool/Buffer Pool Manager v1.md",
+    "Database Systems/Projects/Heap File/Planning.md",
     "Database Systems/Oxford Method Essays/Heap File vs Sorting Implementation.md",
     "Database Systems/Projects/Heap File",
-    "Database Systems/Projects/Buffer Pool/Planning.md",
     "Database Systems/External Sorting.md",
     "Database Systems/Query Evaluation.md",
     "Database Systems/Query Planning & Optimization.md",
@@ -250,7 +251,6 @@
     "Database Systems/Projects/Sort Merge Join Implementation/Sort-Merge Join Algorithm.md",
     "Template/Oxford Essay Template.md",
     "Database Systems/Oxford Method Essays/File Scan vs Index Access Paths.md",
-    "Database Systems/Projects/Toy DB Storage Engine/Planning.md",
     "Database Systems/Projects/Sort Merge Join Implementation",
     "Database Systems/Projects/Toy DB Storage Engine",
     "Database Systems/Projects"
