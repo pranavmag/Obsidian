@@ -57,7 +57,7 @@ slot 0 <--- slot 1 <--- slot 2 <--- slot 3 <--- slot 4 <--- slot 5
 
 record in slot 1 deleted
 
-move rest of slots below slot 1 by the length of slot 1.
+move rest of records below slot 1 by the length of slot 1.
 
 slot 0 <--- slot 2 <--- slot 3 <--- slot 4 <--- slot 5
 
