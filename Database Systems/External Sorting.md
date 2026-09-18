@@ -50,6 +50,20 @@ Although this algorithm does not utilize buffer space effectively which external
 
 ### External Merge Sort
 
+Lets say we have a dataset (N pages) that is too large to fit into RAM (B buffer pages). It minimizes disk I/O by chunking the data, sorting the chunks, and streaming them back together.
+
+- **Pass 0 (Initial Sort):** Read $B$ pages into RAM, sort them entirely in memory (e.g., using Quicksort), and write them back to disk. This creates $\lceil \frac{N}{B} \rceil$ separate, individually sorted runs.
+    
+- **Pass 1+ (The $B-1$ Merge):** You cannot merge all runs at once, so you merge them in batches of $B-1$. You allocate $B-1$ RAM pages as input buffers (one for each run) and strictly reserve 1 RAM page as the output buffer (the outbox).
+    
+- **The Streaming Mechanic:** The CPU compares the first records of all active input buffers and moves the smallest one to the output buffer.
+    
+    - _If the output buffer fills up:_ It flushes to the disk and clears itself.
+        
+    - _If an input buffer empties:_ Execution pauses to fetch the next page of that specific run from the disk.
+        
+- **The Math:** Every single pass reads and writes the entire file, costing exactly $2N$ I/Os. Because the runs grow exponentially larger during the merge phase, the total number of passes is $1 + \lceil \log_{B-1} \lceil \frac{N}{B} \rceil \rceil$. Total cost is $2N \times \text{Passes}$.
+
 
 
 
