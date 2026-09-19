@@ -27,3 +27,10 @@ if leaf.next_leaf is not None:
     leaf.next_leaf.previous_leaf = right_leaf
 ```
 
+If an internal node splits, the middle key of the internal node is promoted and moved up. It does not need to be copied over because it does not have data like the leaves. Lets take our tree from earlier.
+
+If we add two keys 58 and 59, 58 is accepted into the leaf node without any modification needed because 3 keys are allowed, but when we add 59 the leaf node overflows because we'd have 56, 57, 58, and 59 which is 4 keys when we can only have 3. So we need to split the leaf node, taking the median value and promoting it (and copying it because it's a leaf node). But the internal node now overflows as well which means we need another split. The median value we promote here is 56 so 56 is now our new root node. Technically the 36, 45, and 56 was our root node before hand but this works for an internal split as well of course.
+
+![[Internal Node Overflow.png]]
+
+![[Internal Node New Root.png]]
