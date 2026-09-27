@@ -64,6 +64,10 @@ Lets say we have a dataset (N pages) that is too large to fit into RAM (B buffer
         
 - **The Math:** Every single pass reads and writes the entire file, costing exactly $2N$ I/Os. Because the runs grow exponentially larger during the merge phase, the total number of passes is $1 + \lceil \log_{B-1} \lceil \frac{N}{B} \rceil \rceil$. Total cost is $2N \times \text{Passes}$.
 
+### Replacement Sort
+
+
+
 
 
 
