@@ -71,4 +71,7 @@ slot 0 <--- slot 2 <--- slot 3 <--- slot 4 <--- slot 5 <--- slot 1
 
 ### Heap File
 
-A heap file should be able to store many heaps pages and know which pages belong to the file. It should be able to find/allocate pages for insertion and turn (page_id, slot_id) into a stable RID. It can fetch the right page for get/delete/update
+A heap file should be able to store many heaps pages and know which pages belong to the file. It should be able to find/allocate pages for insertion and turn (page_id, slot_id) into a stable RID. It can fetch the right page for get/delete/update.
+
+
+
