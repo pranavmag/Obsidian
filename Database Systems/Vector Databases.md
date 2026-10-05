@@ -25,4 +25,41 @@ However even if the second word was something different like "Hello Hello Hello"
 
 ![[Cosine Similarity 1.png]]
 
-This equation is great because we can't always graph things out, especially when we get to higher numbers of dimensions. 
+This equation is great because we can't always graph things out, especially when we get to higher numbers of dimensions.
+
+
+The dot product is the **numerator** of the cosine similarity equation. It's calculated by multiplying each pair of corresponding elements and summing the results:
+
+![[Dot Product.png]]
+
+So this means that if we use or example earlier of "Hello" and "Hello World" that would give us a dot product of 1.
+
+The dot product has a geometric interpretation of **|A| × |B| × cos(θ)** — it's the cosine of the angle **multiplied by the lengths of both vectors**. This means the dot product considers **both direction and magnitude**, unlike cosine similarity which only cares about direction.
+
+So if we compare "Hello World" (1,1) with "Hello Hello Hello" (3,0):
+
+**Cosine similarity**: Both point along the X-axis → angle = 0° → similarity = 1.0 (they're "equally similar" directionally)
+
+**Dot product**: (1×3) + (1×0) = 3 vs (1×1) + (1×0) = 1 → "Hello Hello Hello" scores **3× higher** because it's a longer vector
+
+
+Euclidean distance is the **straight-line distance** between two points in the vector space.
+
+![[Euclidean Distance.png]]
+
+L2 **penalizes magnitude differences** — even though the two vectors point in the same direction, one is much longer, so L2 says they're far apart. This is the opposite of what cosine does.
+
+"Hello World" (1,1) vs "Hello Hello Hello" (3,0):
+
+**Cosine similarity**: Both point along the X-axis → angle = 0° → similarity = 1.0 (identical direction)
+
+**L2 distance**: √((1−3)² + (1−0)²) = √(4+1) = √5 ≈ **2.24** (very far apart)
+
+
+Cosine Similarity should be used in most vector search use cases, for example doing semantic search / RAG with text embeddings, the vector length is arbitrary, or when the embedding model was trained with a cosine loss.
+
+Dot Product should be used mainly when magnitude is a feaure, for example if the vectors are already L2-normalized (then it's identical to cosine, just faster because no division is needed). It can also be used when the vector length encodes something meaningful (confidence, popularity, user activity level in a recommendation system) and also if our model was trained with a dot product / inner-product objective.
+
+Euclidean Distance should be used mainly when absolute position matters for example if we're doing clustering (k-means, DBSCAN are defined in L2 space), when vectors represent spatial/physical measurements (GPS, sensor readings, pixel values), if our model was trained with a contrastive/Euclidean loss, and if we need a true distance (satisfies triangle inequality) for downstream math like bounding boxes or outlier thresholds.
+
+If your vectors are unit-normalized, all three metrics produce identical rankings. So it's not about which metric is best, it's about wheteher or not the model normalizes and whether or not magnitude carries meaning.

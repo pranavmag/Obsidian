@@ -189,7 +189,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Database Systems/Projects/Toy DB Storage Engine/Toy DB Storage Engine.md",
+                "file": "Database Systems/Vector Databases.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -197,8 +197,19 @@
               "icon": "lucide-list",
               "title": "Outline"
             }
+          },
+          {
+            "id": "1bed20630b26cf5d",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -218,13 +229,16 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "32a9483febea5a14",
+  "active": "7626e9bf69ad85c8",
   "lastOpenFiles": [
+    "Database Systems/Images/Euclidean Distance.png",
+    "Database Systems/Images/Dot Product.png",
+    "Untitled.md",
+    "Database Systems/Vector Databases.md",
     "Database Systems/Projects/Heap File/Planning.md",
     "Database Systems/Images/Cosine Similarity 1.png",
     "Drawing 2026-10-02 23.33.11.excalidraw.md",
     "Pasted Image 20261002233316_164.png",
-    "Database Systems/Vector Databases.md",
     "Database Systems/Images/Cosine Similarity.png",
     "Database Systems/Database Exploration/DuckDB.md",
     "Database Systems/Database Exploration/DuckDB",
@@ -253,14 +267,12 @@
     "Database Systems/Oxford Method Essays/Heap File vs Sorting Implementation.md",
     "Database Systems/Projects/Heap File",
     "Database Systems/Query Planning & Optimization.md",
-    "Database Systems/Images/Query Evaluation Plan.png",
     "Database Systems/Database Normalization.md",
     "Database Systems/Database Storage.md",
     "Database Systems/Database Design.md",
     "Database Systems/Relational Calculus.md",
     "Database Systems/Relational Algebra.md",
     "Database Systems/The Relational Model.md",
-    "Database Systems/Oxford Method Essays/Index Nested Loop Joins.md",
     "Database Systems/Projects/Buffer Pool",
     "Database Systems/Projects/Sort Merge Join Implementation",
     "Database Systems/Projects/Toy DB Storage Engine",
