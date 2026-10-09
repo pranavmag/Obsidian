@@ -73,5 +73,15 @@ slot 0 <--- slot 2 <--- slot 3 <--- slot 4 <--- slot 5 <--- slot 1
 
 A heap file should be able to store many heaps pages and know which pages belong to the file. It should be able to find/allocate pages for insertion and turn (page_id, slot_id) into a stable RID. It can fetch the right page for get/delete/update.
 
+For a nice v1 I'll probably just get the basic CRUD operations going and not worry about HeapFile page ownership and persistence for `page_ids_` and free-space tracking until after the baseline v1 tests are established and passed. 
+
+For inserting a record into a heap file we take the record and for each heap page we fetch the page and check whether or not the current record can fit. If it can fit we should insert it and get the slot_id and unpin the page as dirty and return the RID. If it can't fit then we should unpin the page as not dirty and have the bpm create a new page and initialize a heap page, insert our record into there and return RID. The appropriate latches should be used for each operation.
+
+For getting a record we just take the RID and use the page_id and slot_id and fetch the appropriate page using that page id. We get the record using the slot_id and copy the bytes accordingly. The page can be unpinned as not dirty since no data was changed.
+
+For deleting and updating a record it is essentially the same process except we unpin the page as dirty if the operation succeeded. Of course for updating a record we need the updated record and the RID passed in.
+
+
+
 
 

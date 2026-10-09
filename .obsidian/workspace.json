@@ -41,15 +41,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Database Systems/Projects/Database Internals Lab/B+ Tree.md",
+                "file": "Database Systems/Database Exploration/DuckDB.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "B+ Tree"
+              "title": "DuckDB"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -229,18 +230,19 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "7626e9bf69ad85c8",
+  "active": "e8b0ad5deefd378f",
   "lastOpenFiles": [
+    "Database Systems/Database Exploration/DuckDB.md",
+    "Database Systems/Projects/Database Internals Lab/B+ Tree.md",
+    "Database Systems/Projects/Heap File/Planning.md",
+    "Database Systems/Vector Databases.md",
     "Database Systems/Images/Euclidean Distance.png",
     "Database Systems/Images/Dot Product.png",
     "Untitled.md",
-    "Database Systems/Vector Databases.md",
-    "Database Systems/Projects/Heap File/Planning.md",
     "Database Systems/Images/Cosine Similarity 1.png",
     "Drawing 2026-10-02 23.33.11.excalidraw.md",
     "Pasted Image 20261002233316_164.png",
     "Database Systems/Images/Cosine Similarity.png",
-    "Database Systems/Database Exploration/DuckDB.md",
     "Database Systems/Database Exploration/DuckDB",
     "Database Systems/Evaluating Relational Operators.md",
     "Database Systems/Database Exploration",
@@ -248,7 +250,6 @@
     "CUDA",
     "Database Systems/Query Evaluation.md",
     "C++/Smart Pointers.md",
-    "Database Systems/Projects/Database Internals Lab/B+ Tree.md",
     "Database Systems/Images/Internal Node New Root.png",
     "Database Systems/Images/Internal Node Overflow.png",
     "Database Systems/Images/B+ Tree Split.png",
@@ -262,7 +263,6 @@
     "Database Systems/Projects/Buffer Pool/Buffer Pool Manager v2.md",
     "C++/Concurrency.md",
     "Rust/Traits and Generics.md",
-    "Database Systems/Images/Slotted Page.png",
     "Database Systems/Projects/Buffer Pool/Buffer Pool Manager v1.md",
     "Database Systems/Oxford Method Essays/Heap File vs Sorting Implementation.md",
     "Database Systems/Projects/Heap File",

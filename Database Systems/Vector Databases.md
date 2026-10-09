@@ -63,3 +63,12 @@ Dot Product should be used mainly when magnitude is a feaure, for example if the
 Euclidean Distance should be used mainly when absolute position matters for example if we're doing clustering (k-means, DBSCAN are defined in L2 space), when vectors represent spatial/physical measurements (GPS, sensor readings, pixel values), if our model was trained with a contrastive/Euclidean loss, and if we need a true distance (satisfies triangle inequality) for downstream math like bounding boxes or outlier thresholds.
 
 If your vectors are unit-normalized, all three metrics produce identical rankings. So it's not about which metric is best, it's about wheteher or not the model normalizes and whether or not magnitude carries meaning.
+
+### K-Nearest Neighbors (kNN)
+
+This algorithm allows us to take the k nearest vectors to a query vector and they can be grouped in the same category based on their proximity. They use the distance metrics discussed above to actually compute this. This algorithm gives 100% accuracy by comparing the query vector against every vector but is not often used at large scale. Most production vector dbs use Approximate Nearest Neighbor (ANN), sacrificing accuracy for performance.
+
+The time complexity of this algorithm is O(N x d) where N is the number of vectors and d is the number of dimensions. Imagine we get to extremely complicated concepts which may have thousand of dimensions in each vector and we have like a million vectors or so, you can see how that very quickly becomes a problem for performance.
+
+### Approximate Nearest Neighbors (ANN)
+

@@ -148,5 +148,27 @@ I think this also tells us a couple other interesting things as well. The projec
 
 ### Parser
 
+```
+ShellState::ExecuteSQL
+ → ClientContext::IterateStatements
+   → StatementIterator(ParseIterator)
+     → Peek(): tokenize all once (EnsureTokenized), then parse one statement per call
+```
+
+Full Complete Path based off what I've looked into 
+
+```
+PARSE      ClientContext::IterateStatements → ParseIterator::Peek
+           (tokenize once, parse one statement per call)
+BIND+PLAN  Planner::CreatePlan → binder->Bind          planner.cpp
+OPTIMIZE   Optimizer::Optimize                          optimizer.cpp
+PHYSICAL   PhysicalPlanGenerator::Plan                  physical_plan_generator.cpp
+           (all three called from ClientContext::CreatePreparedStatementInternal)
+EXECUTE    ClientContext::SubmitPreparedStatementInternal
+           → Executor::Initialize(result collector)     executor.cpp
+           → results pulled via ExecuteTaskInternal / WaitForTask
+```
+
+### Optimizer
 
 
