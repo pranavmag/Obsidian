@@ -171,4 +171,25 @@ EXECUTE    ClientContext::SubmitPreparedStatementInternal
 
 ### Optimizer
 
+The optimizer has functions that define certain optimizations like filter pushdown.
+
+```
+RunOptimizer(OptimizerType::FILTER_PUSHDOWN, [&]() {
+
+FilterPushdown filter_pushdown(*this);
+
+unordered_set<TableIndex> top_bindings;
+
+filter_pushdown.CheckMarkToSemi(*plan, top_bindings);
+
+plan = filter_pushdown.Rewrite(std::move(plan));
+
+});
+```
+
+This is the pass that moved `a > 5` into the scan. Also within the constructor in this file the `ConstantFoldingRule` rewriter was defined in there and that will be for every object. The rewriter runs in the very first pass, `EXPRESSION_REWRITER`, which the comment says simplifies expression trees without changing plan structure. That’s where `CAST(5 AS BIGINT)` became `5`.
+
+- **The expression rewriter** (`ConstantFoldingRule`) folds constants in ordinary expressions. With it disabled, `CAST(5 AS BIGINT)` stays in the Filter operator.
+- **Filter pushdown** also gets rid of the CAST, but as a side effect of building the scan’s filter, which most likely stores an evaluated constant rather than an expression.
+
 
