@@ -49,7 +49,8 @@
               "title": "DuckDB"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -229,11 +230,11 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "32a9483febea5a14",
+  "active": "e8b0ad5deefd378f",
   "lastOpenFiles": [
+    "Database Systems/Evaluating Relational Operators.md",
     "Database Systems/Projects/Heap File/Planning.md",
     "Database Systems/Database Exploration/DuckDB.md",
-    "Database Systems/Evaluating Relational Operators.md",
     "Database Systems/Vector Databases.md",
     "Database Systems/Projects/Database Internals Lab/B+ Tree.md",
     "Database Systems/Images/Euclidean Distance.png",

@@ -81,6 +81,29 @@ For getting a record we just take the RID and use the page_id and slot_id and fe
 
 For deleting and updating a record it is essentially the same process except we unpin the page as dirty if the operation succeeded. Of course for updating a record we need the updated record and the RID passed in.
 
+Also a big problem we have right now is that AddPage() in the buffer pool manager doesn't validate disk page ids before touching frame state so that should be changed. Also NewPage() needs to acquire a usable frame before allocating on disk. The buffer pool manager should be refactored for these changes.
+
+Also the persistence of page_ids_ is the next step. For v1 I started off by using `std::vector<int> page_ids_;` for the page ids but if the process exits then the pages still exist but the page_ids_ are gone. We need to make this metadata persistent so that the heap file knows which disk pages belong to it even after restarting.
+
+There's a couple ways to do this, I'm familiar with a linked list of these heap pages and a page directory with free-space metadata. I think I'll go with the page directory because it allows for faster inserts with variable-length records and also has a smaller metadata footprint. It only holds one entry per page (pointer + free space count) instead of two neighbor pointers embedded in every data page.
+
+Design choices:
+
+- Each directory entry represents one heap data page.
+- `free_space` is cached metadata used to avoid fetching/scanning every heap page during insertion.
+- `HeapPage::GetFreeSpace()` is the main value; the directory only caches that value.
+- Directory metadata lives in normal database pages and therefore goes through the `BufferPoolManager`.
+- `HeapFile` will keep only the ID of its first directory page in memory, rather than all data-page IDs.
+- `next_dir_page` is included now so directory pages can be chained later, even if the first implementation initially uses only one directory page.
+- A separate `HeapFileHeader` page is deferred for now. The first directory page acts as the persistent root/identity of the heap file.
+- If a separate heap-file header is introduced later, it can store metadata such as `first_dir_page` and a `uint32_t page_count`.
+
+The new path for `InsertRecord` should be fetching the first directory page, scanning the directory entries for enough free space, fetching the selected heap page, inserting the record, updating the directory entry's free space, and then marking the data page and directory page as dirty.
+
+If no page has enough room then allocate a new heap page, initialize and insert the record, add the page directory entry, and store the remaining free space.
+
+`HeapFile` decides which page to use; `HeapPage` decides how records are laid out inside that page.
+
 
 
 
