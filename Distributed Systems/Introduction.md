@@ -22,3 +22,9 @@ Distributed systems are hard to build because of the first two problems as well 
 Ideally 2x the computers gives 2x the performance or throughput. For example if you're scaling a website we start with one browser, one web server, and one database but as traffic grows we can add more web servers and at that point the database becomes a bottleneck and you need more databases.
 
 Scaling up can introduce issues like machines failing. Fault tolerance is extremely important and has to be built into the design itself. The two types of fault tolerance are availability and recoverability. Availability means that a system can keep providing a reliable service and recoverability means that even though a system may stop it will resume correctly with no loss of data once it is restored. A good available system is also recoverable.
+
+The main tools are non-volatile storage and replication (multiple copies of state).
+
+Consistency is also extremely important. If we have like a key-value store where replica A puts data in but the client crashes before the data reaches replica B then replica B is potentially reading stale data if it does a GET operation on that data.
+
+
