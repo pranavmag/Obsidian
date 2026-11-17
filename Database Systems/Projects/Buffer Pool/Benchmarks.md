@@ -28,5 +28,11 @@ repetitions:      10
 
 For example with hot/cold access and we have 100 pages and only 10 pages are hot pages that are frequently accessed and the other 90 are cold pages. Lets say that our buffer only holds 16 pages which means that we have significantly more pages than what can fit in the buffer, which in our sequential case would cause a lot of cache misses and evictions, but if we use hot pages we may have significantly less cache misses and evictions because the hot pages only take up 10/16 buffer pages and those are the ones that are most accessed.
 
+For the hot/cold access we should also have a seed that drives the randomness. It decides which pages get picked as "hot" vs. "cold," the order of accesses, and the per-access probability rolls against `hot_probability`. 
+
+- **Same `seed`** → identical access pattern every time I run the benchmark. This is what makes results **comparable across runs** (e.g., before vs. after a code change).
+    
+- **Different `seed`** → a different but equally valid access pattern. Useful for checking that the results aren't just for one particular sequence.
+
 
 
