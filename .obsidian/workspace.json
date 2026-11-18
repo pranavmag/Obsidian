@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C++/Creating Objects.md",
+                "file": "C++/std string SSO and constexpr.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Creating Objects"
+              "title": "std string SSO and constexpr"
             }
           },
           {
@@ -49,8 +49,7 @@
               "title": "DuckDB Code"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -230,14 +229,17 @@
       "obsidian-excalidraw-plugin:New drawing": false
     }
   },
-  "active": "e8b0ad5deefd378f",
+  "active": "32a9483febea5a14",
   "lastOpenFiles": [
+    "C++/Learncpp/Chapter 5.md",
+    "C++/std string SSO and constexpr.md",
+    "Distributed Systems/RPC and Threads.md",
+    "Database Systems/Database Exploration/DuckDB Code.md",
+    "C++/Creating Objects.md",
     "Distributed Systems/Introduction.md",
     "Distributed Systems/GFS.md",
     "Golang/Multiple Ways to Declare Variables.md",
-    "Distributed Systems/RPC and Threads.md",
     "Database Systems/Projects/Buffer Pool/Benchmarks.md",
-    "C++/Creating Objects.md",
     "C++/Prompt.md",
     "C++/CMake.md",
     "C++/Unconfirmed 970214.crdownload",
@@ -263,9 +265,6 @@
     "Golang",
     "Networking",
     "C++/Learncpp/Chapter 12.md",
-    "C++/Concurrency.md",
-    "C++/Templates.md",
-    "C++/std vector.md",
     "Database Systems/Images/Euclidean Distance.png",
     "Database Systems/Images/Dot Product.png",
     "Database Systems/Images/Cosine Similarity 1.png",

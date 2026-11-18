@@ -1,5 +1,6 @@
 2026-11-11 02:33
 
+Tags:
 ### Threads
 
 Threads are the main tool for managing concurrency. Distributed programs have many things happening at once like a client talking to many servers, or a server handling many clients.
